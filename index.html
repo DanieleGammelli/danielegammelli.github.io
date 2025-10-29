@@ -219,7 +219,7 @@
                 However, delivering reliable, general-purpose autonomy presents unique challenges for AI systems.
                 Autonomous systems must guarantee <strong>safety</strong> and <strong>reliability</strong> in real-world environments, often <strong>under conditions that cannot be anticipated at design time</strong>.
                 They must also operate within the <strong>constraints of on-board compute</strong> and learn from only <strong>scarce embodiment-specific data</strong>.
-                These stringent requirements stand in sharp contrast to the properties of current AI systems, which&mdash;despite their remarkable capabilities&mdash;depend on<strong>vast amounts of training data</strong> and <strong>large-scale compute</strong>, and remain vulnerable to <strong>hallucinations and brittle generalization</strong>.
+                These stringent requirements stand in sharp contrast to the properties of current AI systems, which&mdash;despite their remarkable capabilities&mdash;depend on <strong>vast amounts of training data</strong> and <strong>large-scale compute</strong>, and remain vulnerable to <strong>hallucinations and brittle generalization</strong>.
               </p>
               <p>
                 To that end, I address these challenges by employing and advancing techniques from AI/ML, control theory, and mathematical optimization.
@@ -233,12 +233,194 @@
         </table>
 
         <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+          <tr  onmouseout="spacellava_start()" onmouseover="spacellava_start()">
+            <td width="25%">
+              <div class="one">
+              <div class="two" id="spacellava_video">
+                <video width="160" height="100" autoplay loop muted playsinline id="spacellava_vid">
+                  <source src="resources/spacellava.mp4" type="video/mp4">
+                </video>
+              </div>
+              </div>
+              
+              <script type="text/javascript">
+              function spacellava_start() {
+                document.getElementById('spacellava_vid').play();
+              }
+              function spacellava_stop() {
+                document.getElementById('spacellava_vid').pause();
+                document.getElementById('spacellava_vid').currentTime = 0;
+              }
+              </script>
+            </td>
+            <td width="75%" valign="top">
+            <p>
+            <p>
+              <a target="_blank" href="https://arxiv.org/abs/2408.05924">
+              <papertitle>Space-LLaVA: a Vision-Language Model Adapted to Extraterrestrial Applications</papertitle>
+              </a>
+              <br>
+              <a target="_blank" href="https://scholar.google.com/citations?user=DsWNh1YAAAAJ&hl=en">Matthew Foutter</a>, <strong>Daniele Gammelli</strong>, <a target="_blank" href="https://scholar.google.com/citations?user=Zzro5gUAAAAJ&hl=en">Justin Kruger</a>, <a target="_blank" href="https://scholar.google.com/citations?user=Wr17ic8AAAAJ&hl=en">Ethan Foss</a>, <a target="_blank" href="https://www.linkedin.com/in/praneet-bhoj">Praneet Bhoj</a>, <a target="_blank" href="https://slab.stanford.edu/people/tommaso-guffanti">Tommaso Guffanti</a>, <a target="_blank" href="https://slab.stanford.edu/people/simone-damico">Simone D'Amico</a>, <a target="_blank" href="https://web.stanford.edu/~pavone/">Marco Pavone</a><br>
+              <i>IEEE Aerospace Conference</i>, 2025 <br>
+              <a target="_blank" href ="https://arxiv.org/abs/2408.05924">arXiv</a>
+              <br>
+            </p>
+            <p>  We present Space-LLaVA, initialized from a pre-trained LLaVA 13B model and fine-tuned to extraterrestrial applications on tasks such as, e.g., instruction-following, conversations constructed from three extraterrestrial datasets. </p>
+            <p>
+            </p>
+            </td>
+          </tr>
+          
+          <tr  onmouseout="ohio_start()" onmouseover="ohio_start()">
+            <td width="25%">
+              <div class="one">
+              <div class="two" id="ohio_video">
+                <video width="160" height="100" autoplay loop muted playsinline id="ohio_vid">
+                  <source src="resources/ohio.mp4" type="video/mp4">
+                </video>
+              </div>
+              </div>
+              
+              <script type="text/javascript">
+              function ohio_start() {
+                document.getElementById('ohio_vid').play();
+              }
+              function ohio_stop() {
+                document.getElementById('ohio_vid').pause();
+                document.getElementById('ohio_vid').currentTime = 0;
+              }
+              </script>
+            </td>
+            <td width="75%" valign="top">
+            <p>
+            <p>
+              <a target="_blank" href="https://ohio-offline-hierarchical-rl.github.io/">
+              <papertitle>Offline Hierarchical Reinforcement Learning via Inverse Optimization</papertitle>
+              </a>
+              <br>
+              <a target="_blank" href="https://scholar.google.com/citations?user=-0zHX8oAAAAJ&hl=en">Carolin Schmidt</a>, <strong>Daniele Gammelli</strong>, <a target="_blank" href="https://web.stanford.edu/~jh2/">James Harrison</a>, <a target="_blank" href="https://web.stanford.edu/~pavone/">Marco Pavone</a>, <a target="_blank" href="https://fprodrigues.com/">Filipe Rodrigues</a><br>
+              <i>International Conference on Learning Representations (ICLR)</i>, 2025 <br>
+              <a target="_blank" href ="https://ohio-offline-hierarchical-rl.github.io/">project page</a> / <a target="_blank" href ="https://arxiv.org/abs/2410.07933">arXiv</a> / <a target="_blank" href ="https://github.com/carolinssc/OHIO">code</a>
+              <br>
+            </p>
+            <p> We propose OHIO: a framework for offline reinforcement learning (RL) of hierarchical policies. We demonstrate our framework on robotic and network optimization problems and show that it substantially outperforms end-to-end RL methods and improves robustness. We investigate a variety of instantiations of our framework, both in direct deployment of policies trained offline and when online fine-tuning is performed. </p>
+            <p>
+            </p>
+            </td>
+          </tr>
+          
+          <tr  onmouseout="art_start()" onmouseover="art_start()">
+            <td width="25%">
+              <div class="one">
+              <div class="two" id = 'art_image'><img src='resources/art_acc.png' width="160" height="100"></div>
+              <!-- <img src='resources/art.png' width="160" height="100" style="z-index:-1"> -->
+              </div>
+              <script type="text/javascript">
+              function arto_start() {
+              document.getElementById('art_image').style.opacity = "1";
+              }
+              function arto_stop() {
+              document.getElementById('art_image').style.opacity = "0";
+              }
+              // spirl_stop()
+              </script>
+            </td>
+            <td width="75%" valign="top">
+            <p>
+            <p>
+              <a target="_blank" href="https://acc25art.github.io/">
+              <papertitle>Generalizable Spacecraft Trajectory Generation via Multimodal Learning with Transformers</papertitle>
+              </a>
+              <br>
+              <a target="_blank" href="https://scholar.google.com/citations?user=YVygiuQAAAAJ&hl=en">Davide Celestini</a>, <a target="_blank" href="https://scholar.google.com/citations?user=yuvhn2oAAAAJ&hl=en">Amirhossein Afsharrad</a>, <strong>Daniele Gammelli</strong>, <a target="_blank" href="https://scholar.google.com/citations?user=fs5zLSoAAAAJ&hl=it">Tommaso Guffanti</a>, <a target="_blank" href="https://gioele.science/">Gioele Zardini</a>, <a target="_blank" href="https://lall.stanford.edu/">Sanjay Lall</a>, <a target="_blank" href="https://scholar.google.com/citations?user=E8ZGJBcAAAAJ&hl=it">Elisa Capello</a>, <a target="_blank" href="https://slab.stanford.edu/people/simone-damico">Simone D'Amico</a>, <a target="_blank" href="https://web.stanford.edu/~pavone/">Marco Pavone</a><br>
+              <i>American Control Conference</i>, 2025 (<span style="color: #ff0000">Single-track Presentation</span>)<br>
+              <a target="_blank" href ="https://acc25art.github.io/">project page</a> / <a target="_blank" href ="https://arxiv.org/abs/2410.11723">arXiv</a>
+              <br>
+            </p>
+            <p> We present a novel trajectory generation framework that generalizes across diverse problem configurations, by leveraging high-capacity transformer neural networks capable of learning from multimodal data sources. Specifically, our approach integrates transformer-based neural network models into the trajectory optimization process, encoding both scene-level information (e.g., obstacle locations, initial and goal states) and trajectory-level constraints (e.g., time bounds, fuel consumption targets) via multimodal representations. </p>
+            <p>
+            </p>
+            </td>
+          </tr>
+          
+          <tr  onmouseout="art_start()" onmouseover="art_start()">
+            <td width="25%">
+              <div class="one">
+              <div class="two" id = 'art_image'><img src='resources/art_aero25.png' width="160" height="100"></div>
+              <!-- <img src='resources/art.png' width="160" height="100" style="z-index:-1"> -->
+              </div>
+              <script type="text/javascript">
+              function arto_start() {
+              document.getElementById('art_image').style.opacity = "1";
+              }
+              function arto_stop() {
+              document.getElementById('art_image').style.opacity = "0";
+              }
+              // spirl_stop()
+              </script>
+            </td>
+            <td width="75%" valign="top">
+            <p>
+            <p>
+              <a target="_blank" href="https://robust-art.github.io/">
+              <papertitle>Towards Robust Spacecraft Trajectory Optimization via Transformers</papertitle>
+              </a>
+              <br>
+              <a target="_blank" href="https://yujitakubo.com/">Yuji Takubo</a>*, <a target="_blank" href="https://slab.stanford.edu/people/tommaso-guffanti">Tommaso Guffanti</a>*, <strong>Daniele Gammelli</strong>*, <a target="_blank" href="https://web.stanford.edu/~pavone/">Marco Pavone</a>, <a target="_blank" href="https://slab.stanford.edu/people/simone-damico">Simone D'Amico</a><br>
+              <i>IEEE Aerospace Conference</i>, 2025<br>
+              <a target="_blank" href ="https://robust-art.github.io/">project page</a> / <a target="_blank" href ="https://arxiv.org/abs/2410.05585">arXiv</a>
+              <br>
+            </p>
+            <p> This work extends the capabilities of ART to address robust chance-constrained optimal control problems. Specifically, ART is applied to challenging rendezvous scenarios in Low Earth Orbit (LEO), ensuring fault-tolerant behavior under uncertainty. The proposed warm-starting strategy is shown to consistently produce high-quality reference trajectories, achieving up to 30% cost improvement and 50% reduction in infeasible cases compared to conventional methods, demonstrating robust performance across multiple state representations. </p>
+            <p>
+            </p>
+            </td>
+          </tr>
 
-        <tr  onmouseout="art_start()" onmouseover="art_start()">
+          <tr  onmouseout="art_start()" onmouseover="art_start()">
+            <td width="25%">
+              <div class="one">
+              <div class="two" id="art_video">
+                <video width="160" height="100" autoplay loop muted playsinline id="art_vid">
+                  <source src="resources/tto.mp4" type="video/mp4">
+                </video>
+              </div>
+              </div>
+              
+              <script type="text/javascript">
+              function art_start() {
+                document.getElementById('art_vid').play();
+              }
+              function art_stop() {
+                document.getElementById('art_vid').pause();
+                document.getElementById('art_vid').currentTime = 0;
+              }
+              </script>
+            </td>
+            <td width="75%" valign="top">
+            <p>
+            <p>
+              <a target="_blank" href="https://transformermpc.github.io/">
+              <papertitle>Transformer-based Model Predictive Control: Trajectory Optimization via Sequence Modeling</papertitle>
+              </a>
+              <br>
+              <a target="_blank" href="https://scholar.google.com/citations?user=YVygiuQAAAAJ&hl=en">Davide Celestini</a>*, <strong>Daniele Gammelli</strong>*, <a target="_blank" href="https://slab.stanford.edu/people/tommaso-guffanti">Tommaso Guffanti</a>, <a target="_blank" href="https://slab.stanford.edu/people/simone-damico">Simone D'Amico</a>, <a target="_blank" href="https://scholar.google.com/citations?user=E8ZGJBcAAAAJ&hl=it">Elisa Capello</a>, <a target="_blank" href="https://web.stanford.edu/~pavone/">Marco Pavone</a><br>
+              <i>IEEE Robotics and Automation Letters</i>, 2025<br>
+              <a target="_blank" href ="https://transformermpc.github.io/">project page</a> / <a target="_blank" href ="https://arxiv.org/abs/2410.23916">arXiv</a>  / 
+              <a target="_blank" href ="https://github.com/DavideCelestini/transformermpc-ral24">code</a>
+              <br>
+            </p>
+            <p> We present a unified framework to combine the main strengths of optimization-based and learning-based methods for MPC. Our experiments, performed in simulation and the real world onboard a free-flyer platform, demonstrate the capabilities of our framework to improve MPC convergence and runtime. Compared to purely optimization-based approaches, results show that our approach can improve trajectory generation performance by up to 70%, reduce the number of solver iterations by up to 45%, and improve overall MPC runtime by 7x without loss in performance. </p>
+            <p>
+            </p>
+            </td>
+          </tr>
+        
+          <tr  onmouseout="art_start()" onmouseover="art_start()">
           <td width="25%">
             <div class="one">
             <div class="two" id = 'art_image'><img src='resources/art.gif' width="160" height="100"></div>
-            <img src='resources/art.png' width="160" height="100" style="z-index:-1">
+            <!-- <img src='resources/art.png' width="160" height="100" style="z-index:-1"> -->
             </div>
             <script type="text/javascript">
             function arto_start() {
@@ -272,8 +454,8 @@
         <tr  onmouseout="grl_start()" onmouseover="grl_start()">
           <td width="25%">
             <div class="one">
-            <div class="two" id = 'grl_image'><img src='resources/grl.png' width="160" height="160"></div>
-            <img src='resources/grl.png' width="160" height="160" style="z-index:-1">
+            <div class="two" id = 'grl_image'><img src='resources/grl.png' width="160" height="100"></div>
+            <!-- <img src='resources/grl.png' width="160" height="160" style="z-index:-1"> -->
             </div>
             <script type="text/javascript">
             function grl_start() {
@@ -307,8 +489,8 @@
         <tr  onmouseout="grl_eamod_start()" onmouseover="grl_eamod_start()">
           <td width="25%">
             <div class="one">
-            <div class="two" id = 'grl_eamod_image'><img src='resources/grl_eamod.png' width="160" height="160"></div>
-            <img src='resources/grl_eamod.png' width="160" height="160" style="z-index:-1">
+            <div class="two" id = 'grl_eamod_image'><img src='resources/grl_eamod.png' width="160" height="100"></div>
+            <!-- <img src='resources/grl_eamod.png' width="160" height="160" style="z-index:-1"> -->
             </div>
             <script type="text/javascript">
             function grl_eamod_start() {
@@ -342,7 +524,7 @@
         <tr  onmouseout="grl_meta_start()" onmouseover="grl_meta_start()">
           <td width="25%">
             <div class="one">
-            <div class="two" id = 'grl_meta_image'><img src='resources/meta_grl.png' width="160" height="160"></div>
+            <div class="two" id = 'grl_meta_image'><img src='resources/meta_grl.png' width="160" height="100"></div>
             <img src='resources/meta_grl.png' width="160" height="160" style="z-index:-1">
             </div>
             <script type="text/javascript">
@@ -377,7 +559,7 @@
         <tr  onmouseout="bs_start()" onmouseover="bs_start()">
           <td width="25%">
             <div class="one">
-            <div class="two" id = 'bs_image'><img src='resources/bs.png' width="160" height="160"></div>
+            <div class="two" id = 'bs_image'><img src='resources/bs.png' width="160" height="100"></div>
             <img src='resources/bs.png' width="160" height="160" style="z-index:-1">
             </div>
             <script type="text/javascript">
@@ -413,7 +595,7 @@
         <tr  onmouseout="mogp_start()" onmouseover="mogp_start()">
           <td width="25%">
             <div class="one">
-            <div class="two" id = 'mogp_image'><img src='resources/mogp.png' width="160" height="160"></div>
+            <div class="two" id = 'mogp_image'><img src='resources/mogp.png' width="160" height="100"></div>
             <img src='resources/mogp.png' width="160" height="160" style="z-index:-1">
             </div>
             <script type="text/javascript">
@@ -485,7 +667,7 @@
         <tr  onmouseout="grl_amod_start()" onmouseover="grl_amod_start()">
           <td width="25%">
             <div class="one">
-            <div class="two" id = 'grl_amod_image'><img src='resources/grl_amod.png' width="160" height="160"></div>
+            <div class="two" id = 'grl_amod_image'><img src='resources/grl_amod.png' width="160" height="100"></div>
             <img src='resources/grl_amod.png' width="160" height="160" style="z-index:-1">
             </div>
             <script type="text/javascript">
