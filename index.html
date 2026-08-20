@@ -1,844 +1,1491 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QEEMTJJSV3"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      gtag('config', 'G-QEEMTJJSV3');
-    </script>
-	  <meta name=viewport content=“width=800”>
-	  <meta name="generator" content="HTML Tidy for Linux/x86 (vers 11 February 2007), see www.w3.org">
-	  <style type="text/css">
-    /* Color scheme stolen from Sergey Karayev */
-    
-    a {
-      color: #1772d0;
-      text-decoration: none;
-    }
-    
-    a:focus,
-    a:hover {
-      color: #f09228;
-      text-decoration: none;
-    }
-    
-    body,
-    td,
-    th,
-    tr,
-    p,
-    a {
-      font-family: 'Lato', Verdana, Helvetica, sans-serif;
-      font-size: 14px
-    }
-    
-    strong {
-      font-family: 'Lato', Verdana, Helvetica, sans-serif;
-      font-size: 14px;
-    }
-    
-    heading {
-      font-family: 'Lato', Verdana, Helvetica, sans-serif;
-      font-size: 22px;
-    }
-    
-    papertitle {
-      font-family: 'Lato', Verdana, Helvetica, sans-serif;
-      font-size: 14px;
-      font-weight: 700
-    }
-    
-    name {
-      font-family: 'Lato', Verdana, Helvetica, sans-serif;
-      font-size: 32px;
+  <title>Daniele Gammelli</title>
+  <meta name="description"
+    content="Daniele Gammelli — Research Director of the Machine Intelligence for Robot Autonomy Laboratory at the Italian Institute of Artificial Intelligence (AI4I), and Researcher in Aeronautics and Astronautics at Stanford University. Research on AI-powered autonomous systems for aerospace robotics and future mobility.">
+  <link rel="canonical" href="https://danielegammelli.github.io/">
+  <link rel="icon" type="image/png" href="footer.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://danielegammelli.github.io/">
+  <meta property="og:title" content="Daniele Gammelli">
+  <meta property="og:description"
+    content="Research Director of the Machine Intelligence for Robot Autonomy Laboratory at AI4I, and Researcher in Aeronautics and Astronautics at Stanford University.">
+  <meta property="og:image" content="https://danielegammelli.github.io/gammelli_profile.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Daniele Gammelli">
+  <meta name="twitter:description"
+    content="Research Director of the Machine Intelligence for Robot Autonomy Laboratory at AI4I, and Researcher in Aeronautics and Astronautics at Stanford University.">
+  <meta name="twitter:image" content="https://danielegammelli.github.io/gammelli_profile.jpg">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QEEMTJJSV3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-QEEMTJJSV3');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Palatino is the face on ai.stanford.edu/~cbfinn and ships with macOS and
+       Windows; Spectral is the web-served stand-in for everyone else. -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&amp;display=swap">
+
+  <style>
+    /* ─── Design tokens ─────────────────────────────────────────────────────
+       Ported verbatim from the MIRA Lab site (src/styles/globals.css) so the
+       two sites read as one family. */
+    :root {
+      --accent: #0088b8;
+      --accent-2: #00b4d8;
+      --accent-bg: #e0f5fb;
+      --signal: #0d9488;
+      --institute: #0f6b6b;
+      --ink: #0d1117;
+      --ink-2: #3d4653;
+      --muted: #7c8695;
+      --surface: #faf9f7;
+      --surface-2: #f0ede8;
+      --border: rgba(13, 17, 23, .06);
+      --border-2: rgba(13, 17, 23, .10);
+      --award: #c62828;
+
+      /* One typeface throughout — a Palatino-class serif, as on Finn's page. */
+      --serif: 'TeX Gyre Pagella', 'Palatino Linotype', 'Book Antiqua', Palatino,
+               Spectral, Georgia, 'Times New Roman', serif;
+
+      --wrap: 68rem;
+      --nav-h: 3.5rem;
     }
 
-    li:not(:last-child) {
-        margin-bottom: -10px;
-    }
-    
-    .one {
-      width: 160px;
-      height: 160px;
+    /* ─── Reset ─────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { overflow-x: hidden; scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 1rem); }
+    body {
+      margin: 0;
+      background: var(--surface);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
       position: relative;
+      /* No overflow-x here: it would make <body> a scroll container and quietly
+         stop the sticky nav from sticking. The glow does its own clipping. */
     }
-    
-    .two {
-      width: 160px;
-      height: 160px;
+    img, video, svg { display: block; max-width: 100%; }
+    /* Keeps the width/height attributes (which reserve space pre-load) from
+       overriding CSS sizing; per-element rules that set an explicit height win. */
+    img { height: auto; }
+    h1, h2, h3 { margin: 0; font-family: var(--serif); font-weight: 600; letter-spacing: -.01em; }
+    p { margin: 0 0 1rem; }
+    ul { margin: 0; padding: 0; list-style: none; }
+
+    /* MIRA's signature prose link: accent text, lighter-cyan underline,
+       darkening to ink on hover. */
+    a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-decoration-color: var(--accent-2);
+      text-underline-offset: 2px;
+      font-weight: 500;
+      transition: color .15s ease;
+    }
+    a:hover, a:focus-visible { color: var(--ink); }
+    a.plain { text-decoration: none; font-weight: inherit; color: inherit; }
+
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+
+    .skip-link {
+      position: absolute; top: 0; left: 0; z-index: 100;
+      transform: translateY(-120%);
+      background: var(--ink); color: #fff; padding: .6rem 1rem; border-radius: 0 0 8px 0;
+      text-decoration: none;
+    }
+    .skip-link:focus { transform: none; color: #fff; }
+
+    /* ─── Layout primitives ─────────────────────────────────────────────── */
+    .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 1.5rem; }
+    @media (min-width: 64rem) { .wrap { padding: 0 2rem; } }
+
+    .sec { padding: 3rem 0; }
+    @media (min-width: 40rem) { .sec { padding: 4rem 0; } }
+    .sec--band {
+      background: var(--surface-2);
+      border-top: 1px solid var(--border-2);
+      border-bottom: 1px solid var(--border-2);
+    }
+
+    .sec-title {
+      font-size: clamp(1.75rem, 3.2vw, 2.35rem);
+      line-height: 1.15;
+      margin: 0;
+    }
+    .sec-head { margin-bottom: 2rem; }
+    .sec-head--center { text-align: center; }
+
+    .lead { font-size: 1.125rem; line-height: 1.8; color: var(--ink-2); }
+    .prose { color: var(--ink-2); }
+    .prose p { line-height: 1.75; }
+    .prose strong { color: var(--ink); font-weight: 600; }
+
+    /* ─── Ambient glow (MIRA's TopRightGlow) ────────────────────────────── */
+    /* The glow is rotated and translated past the right edge, which would widen
+       the document (and push every centered .wrap off-centre) — so it lives in
+       its own clipping box rather than relying on overflow-x on <body>. */
+    .glow {
+      pointer-events: none;
       position: absolute;
-      transition: opacity .2s ease-in-out;
-      -moz-transition: opacity .2s ease-in-out;
-      -webkit-transition: opacity .2s ease-in-out;
+      top: 0; left: 0; right: 0; z-index: -1;
+      height: 620px; overflow: hidden;
     }
-    
-    .fade {
-      transition: opacity .2s ease-in-out;
-      -moz-transition: opacity .2s ease-in-out;
-      -webkit-transition: opacity .2s ease-in-out;
-    }
-    
-    span.highlight {
-      background-color: #ffffd0;
-    }
-
-    img {
-      border-radius: 15px;
+    .glow::before {
+      content: ""; position: absolute;
+      top: -12rem; right: -6rem;
+      height: 560px; width: 820px;
+      transform: rotate(-12deg);
+      border-radius: 9999px; opacity: .7; filter: blur(64px);
+      background:
+        radial-gradient(45% 55% at 78% 30%, rgba(0, 180, 216, .65), transparent 72%),
+        radial-gradient(42% 50% at 92% 18%, rgba(96, 110, 232, .50), transparent 70%),
+        radial-gradient(48% 55% at 58% 55%, rgba(13, 148, 136, .32), transparent 72%);
     }
 
-    /* p {
-    text-align: justify;
-    } */
-    /* Selected Press Coverage */
-    .press-logos {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 32px;
-      margin-top: 18px;
+    /* ─── Sticky nav ────────────────────────────────────────────────────── */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      height: var(--nav-h);
+      display: flex; align-items: center;
+      background: rgba(250, 249, 247, .82);
+      backdrop-filter: saturate(180%) blur(12px);
+      -webkit-backdrop-filter: saturate(180%) blur(12px);
+      border-bottom: 1px solid var(--border-2);
+    }
+    .nav .wrap { display: flex; align-items: stretch; justify-content: space-between; gap: 1.5rem; width: 100%; height: 100%; }
+    .nav-name {
+      display: flex; align-items: center;
+      font-family: var(--serif); font-weight: 600; font-size: 1rem;
+      letter-spacing: -.02em; color: var(--ink); text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav-name:hover { color: var(--accent); }
+    .nav-links { display: flex; align-items: stretch; height: 100%; }
+    .nav-links a {
+      position: relative;
+      display: flex; align-items: center; padding: 0 .9rem;
+      font-size: .9rem; font-weight: 500; color: var(--ink-2);
+      text-decoration: none;
+      transition: color .15s ease, background-color .15s ease;
+    }
+    .nav-links a:hover, .nav-links a.is-active { color: var(--accent); }
+    .nav-links a:hover { background: rgba(13, 17, 23, .025); }
+    /* The plus-grid marks from stanfordasl.github.io: a small cross sits on the
+       rule at every boundary between nav items, plus one closing the row. */
+    .nav-links a::before,
+    .nav-links a:last-child::after {
+      content: ""; position: absolute; bottom: -8px;
+      width: 15px; height: 15px; pointer-events: none;
+      background: no-repeat center/15px 15px
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 15 15'%3E%3Cpath d='M8 0H7V7H0V8H7V15H8V8H15V7H8V0Z' fill='rgba(13,17,23,0.18)'/%3E%3C/svg%3E");
+    }
+    .nav-links a::before { left: -7.5px; }
+    .nav-links a:last-child::after { right: -7.5px; }
+    @media (max-width: 60rem) { .nav-links { display: none; } }
+
+    /* ─── Hero ──────────────────────────────────────────────────────────── */
+    .hero { padding: 3rem 0 2.5rem; }
+    @media (min-width: 40rem) { .hero { padding: 4rem 0 3rem; } }
+    .hero-grid {
+      display: grid; gap: 2.5rem;
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+    @media (min-width: 52rem) {
+      .hero-grid { grid-template-columns: minmax(0, 1fr) 15rem; gap: 3.5rem; }
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 3.3rem);
+      line-height: 1.06;
+      font-weight: 400;
+      letter-spacing: -.005em;
+      margin-bottom: .4rem;
+    }
+    /* Addresses are spelled out rather than linked, so there is nothing on the
+       page for an address harvester to lift. */
+    .contact {
+      margin: 0 0 1.4rem;
+      font-size: .95rem;
+      color: var(--ink-2);
+    }
+    .contact span { white-space: nowrap; }
+    .contact .sep { color: var(--muted); padding: 0 .45rem; }
+    @media (max-width: 34rem) {
+      .contact span { white-space: normal; }
+      .contact .sep { display: block; height: 0; padding: 0; overflow: hidden; }
+    }
+    .hero-photo {
+      width: 100%; max-width: 15rem;
+      aspect-ratio: 1 / 1; object-fit: cover;
+      border-radius: 1rem;
+      border: 1px solid var(--border-2);
+      box-shadow: 0 1px 2px rgba(13, 17, 23, .05);
+    }
+    /* On a phone the portrait leads, so the page opens on a face rather than on
+       a wall of text with the photo stranded at the bottom. */
+    @media (max-width: 52rem) {
+      .hero-grid { display: flex; flex-direction: column; gap: 1.75rem; }
+      .hero-photo { order: -1; max-width: 9rem; }
     }
 
-    .press-logos a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 92px;              /* ← MAIN CONTROL */
-      min-width: 110px;          /* keeps tiny logos from collapsing */
+    .links-row {
+      display: flex; flex-wrap: wrap; align-items: center;
+      gap: .35rem .85rem;
+      margin-top: 1.5rem;
+      font-size: .95rem;
+    }
+    .links-row a { font-weight: 500; }
+    .links-row .sep { color: var(--border-2); user-select: none; }
+
+    /* ─── Cards / chips ─────────────────────────────────────────────────── */
+    .card {
+      background: #fff;
+      border: 1px solid var(--border-2);
+      border-radius: .75rem;
+      box-shadow: 0 1px 2px rgba(13, 17, 23, .05);
+      transition: box-shadow .2s ease, border-color .2s ease;
+    }
+    .chip {
+      display: inline-flex; align-items: center;
+      border-radius: 9999px;
+      padding: .1rem .55rem;
+      font-size: .74rem; font-weight: 600; font-variant: small-caps;
+      letter-spacing: .03em;
+      color: var(--award);
+      background: rgba(198, 40, 40, .09);
+      vertical-align: .1em;
     }
 
-    .press-logos img {
-      max-height: 100%;
-      max-width: 100%;
-      width: auto;
-      height: auto;
-      border-radius: 0;
+    /* Openings — a hairline rule and a label, no filled panel. */
+    .callout {
+      margin-top: 1.6rem;
+      padding: .1rem 0 .1rem 1.1rem;
+      border-left: 2px solid var(--accent);
+      background: none;
+    }
+    .callout-label {
+      margin: 0 0 .35rem;
+      font-size: .95rem; font-weight: 600; font-style: italic;
+      color: var(--accent);
+    }
+    .callout ul { display: grid; gap: .3rem; }
+    .callout li {
+      font-size: .95rem; line-height: 1.6; color: var(--ink-2);
     }
 
-    .press-logos img.press-gray {
-      filter: grayscale(100%);
-      opacity: 0.9;
+    /* ─── Mission pull-quote ────────────────────────────────────────────── */
+    .mission { padding: 2.75rem 0 5rem; }
+    .mission p {
+      max-width: 46rem; margin: 0 auto; text-align: center;
+      font-family: var(--serif); font-style: italic;
+      font-size: clamp(1.1rem, 2vw, 1.3rem); line-height: 1.65;
+      color: var(--ink-2);
+    }
+    .mission b { font-style: normal; font-weight: 600; color: var(--ink); }
+
+    /* ─── News ──────────────────────────────────────────────────────────── */
+    .news-list { display: grid; gap: .65rem; }
+    .news-list li {
+      display: flex; gap: 1rem;
+      font-size: .95rem; line-height: 1.55;
+      color: var(--ink-2);
+    }
+    .news-date {
+      flex: 0 0 5rem; padding-top: .18rem; text-align: right;
+      font-size: .8rem; font-weight: 600; font-variant: small-caps;
+      letter-spacing: .03em;
+      color: var(--accent);
+    }
+    .news-body { flex: 1; margin: 0; }
+    .news-more { margin-top: 1.75rem; padding-left: 5.5rem; }
+    .news-toggle {
+      background: none; border: 0; padding: 0; cursor: pointer;
+      font-family: var(--serif); font-size: .875rem; font-weight: 500;
+      color: var(--accent); transition: opacity .15s ease;
+    }
+    .news-toggle:hover { opacity: .7; }
+    .news-list[data-collapsed="true"] li[data-extra] { display: none; }
+    @media (max-width: 34rem) {
+      .news-list li { display: block; }
+      .news-date { text-align: left; margin-bottom: .1rem; }
+      .news-more { padding-left: 0; }
     }
 
-    .press-logos img.press-gray:hover {
-      filter: none;
-      opacity: 1;
-      transition: 0.15s ease-in-out;
+    /* ─── Press coverage ────────────────────────────────────────────────── */
+    .press-row {
+      display: flex; flex-wrap: nowrap;
+      align-items: center; justify-content: center;
+      gap: 0 1rem;
+    }
+    @media (min-width: 40rem) { .press-row { gap: 0 2rem; } }
+    @media (min-width: 64rem) { .press-row { gap: 0 2.5rem; } }
+    .press-row a {
+      display: flex; align-items: center; justify-content: center;
+      min-width: 0; height: 3rem; text-decoration: none;
+    }
+    @media (min-width: 40rem) { .press-row a { height: 4rem; } }
+    @media (min-width: 64rem) { .press-row a { height: 5rem; } }
+    .press-row img {
+      max-height: 100%; max-width: 100%;
+      object-fit: contain;
+      opacity: .8; filter: grayscale(100%);
+      transition: opacity .2s ease, filter .2s ease;
+    }
+    .press-row a:hover img, .press-row a:focus-visible img {
+      opacity: 1; filter: grayscale(0) drop-shadow(0 0 16px rgba(0, 180, 216, .5));
+    }
+    @media (max-width: 48rem) {
+      .press-row { flex-wrap: wrap; gap: 1.25rem 1.75rem; }
+      .press-row a { height: 2.75rem; }
+    }
+
+    /* ─── Talk tiles (pora-book pattern) ────────────────────────────────── */
+    .talk-grid {
+      display: grid; gap: 1.75rem 1.5rem;
+      /* One row of three at desktop width; stacks down on smaller screens. */
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    @media (max-width: 52rem) { .talk-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .talk { display: flex; flex-direction: column; gap: .7rem; }
+    .talk-tile { display: block; text-decoration: none; }
+    /* The thumb box: designed poster underneath, YouTube image on top. */
+    .talk-thumb {
+      position: relative; display: block;
+      aspect-ratio: 16 / 9; overflow: hidden;
+      border-radius: 10px; border: 1px solid var(--border-2);
+      background: var(--surface-2);
+      transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+    }
+    .talk-tile:hover .talk-thumb, .talk-tile:focus-visible .talk-thumb {
+      border-color: var(--accent);
+      box-shadow: 0 14px 28px -18px rgba(13, 17, 23, .5);
+    }
+    .talk-poster {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; justify-content: space-between;
+      padding: .85rem 1rem .9rem;
+      background:
+        radial-gradient(120% 90% at 100% 0%, rgba(224, 245, 251, .9), transparent 60%),
+        var(--surface-2);
+    }
+    .talk-poster-y {
+      font-family: var(--serif); font-weight: 600; font-size: 2.4rem; line-height: 1;
+      color: rgba(0, 136, 184, .55);
+    }
+    .talk-poster-mark {
+      font-size: .78rem; font-weight: 600; font-variant: small-caps;
+      letter-spacing: .06em;
+      color: rgba(124, 134, 149, .9);
+    }
+    /* Sits on top of the poster; `cover` crops hqdefault's 4:3 letterbox back to
+       16:9. ytimg serves a *valid* 120x90 grey placeholder (with a 404 status)
+       for videos that aren't public, so `onerror` never fires — the size check
+       is what actually detects it. A real hqdefault is 480x360. */
+    .talk-img.is-local { opacity: 1; }
+    .talk-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+      opacity: 0; transition: opacity .2s ease;
+    }
+    .talk-play {
+      position: absolute; right: .7rem; bottom: .7rem; line-height: 0;
+      transition: transform .15s ease;
+    }
+    .talk-play circle { fill: rgba(250, 249, 247, .88); stroke: var(--border-2); stroke-width: 1; }
+    .talk-play path { fill: var(--accent); }
+    .talk-tile:hover .talk-play { transform: scale(1.08); }
+    .talk-tile:hover .talk-play circle { fill: #fff; stroke: var(--accent); }
+    .talk-meta { display: flex; flex-direction: column; gap: .15rem; }
+    .talk-venue { font-size: .82rem; font-style: italic; }
+    .talk-title { font-size: 1rem; line-height: 1.4; color: var(--ink); font-weight: 500; }
+    .talk-tile:hover ~ .talk-meta .talk-title { color: var(--accent); }
+    @media (max-width: 34rem) { .talk-grid { grid-template-columns: 1fr; } }
+
+    /* ─── Publications ──────────────────────────────────────────────────── */
+    .pub-list { display: grid; gap: 2.25rem; }
+    .pub { display: flex; gap: 1.5rem; align-items: flex-start; }
+    .pub-media {
+      flex: 0 0 clamp(9rem, 16vw, 11rem);
+      aspect-ratio: 16 / 10; overflow: hidden;
+      border-radius: .75rem; border: 1px solid var(--border-2);
+      background: #fff;
+    }
+    /* The figures are transparent PNGs, so the panel behind them has to be
+       paper — a dark one shows through as black. `contain` also keeps the
+       diagrams whole instead of cropping their edges away. */
+    .pub-media img { width: 100%; height: 100%; object-fit: contain; }
+    /* Video frames are opaque and fill the panel, so they still crop to fit. */
+    .pub-media video { width: 100%; height: 100%; object-fit: cover; background: #030712; }
+    .pub-body { flex: 1; min-width: 0; }
+    .pub-title {
+      font-family: var(--serif); font-size: 1rem; font-weight: 600; line-height: 1.4;
+      color: var(--ink); text-decoration: none;
+    }
+    .pub-title:hover { color: var(--accent); }
+    .pub-authors { font-size: .9rem; line-height: 1.55; color: var(--ink-2); margin: .3rem 0 0; }
+    /* A dense author list underlined end to end reads as noise, so links here
+       stay quiet until hovered. */
+    .pub-authors a { font-weight: 400; color: var(--ink-2); text-decoration: none; }
+    .pub-authors a:hover { color: var(--accent); text-decoration: underline; text-decoration-color: var(--accent-2); }
+    .pub-authors strong { color: var(--ink); font-weight: 600; }
+    .pub-venue {
+      font-size: .85rem; line-height: 1.5; color: var(--muted);
+      font-style: italic; margin: .3rem 0 0;
+    }
+    .pub-links { margin: .5rem 0 0; display: flex; flex-wrap: wrap; gap: .4rem; }
+    .pub-links a {
+      display: inline-flex; align-items: center;
+      border-radius: 9999px; padding: .12rem .6rem;
+      font-size: .72rem; font-weight: 500; text-decoration: none;
+      color: var(--accent); background: var(--accent-bg);
+      transition: background-color .15s ease, color .15s ease;
+    }
+    .pub-links a:hover { background: var(--accent); color: #fff; }
+    .pub-abstract {
+      margin: .7rem 0 0; padding-top: .7rem;
+      border-top: 1px solid var(--border);
+      font-size: .9rem; line-height: 1.6; color: var(--ink-2);
+    }
+    @media (max-width: 48rem) {
+      .pub { display: block; }
+      .pub-media { width: 100%; max-width: 18rem; margin-bottom: .9rem; }
+    }
+
+    /* ─── Teaching & book ───────────────────────────────────────────────── */
+    .tb-grid { display: grid; gap: 2.5rem; grid-template-columns: 1fr; }
+    @media (min-width: 56rem) { .tb-grid { grid-template-columns: 1.1fr .9fr; gap: 3rem; } }
+    .teach-list { display: grid; gap: .55rem; }
+    .teach-list li { display: flex; gap: 1rem; font-size: .95rem; line-height: 1.55; }
+    .teach-year {
+      flex: 0 0 5.5rem; text-align: right;
+      font-size: .8rem; font-weight: 600; font-variant: small-caps;
+      letter-spacing: .03em; color: var(--accent);
+      padding-top: .18rem;
+    }
+    @media (max-width: 34rem) {
+      .teach-list li { display: block; }
+      .teach-year { text-align: left; }
+    }
+    .book-card {
+      display: flex; gap: 1.25rem; align-items: center;
+      padding: 1.25rem; text-decoration: none;
+    }
+    .book-card:hover { box-shadow: 0 8px 20px -12px rgba(13, 17, 23, .35); border-color: var(--accent); }
+    .book-card img {
+      flex: 0 0 7rem; width: 7rem;
+      border-radius: .4rem; border: 1px solid var(--border-2);
+    }
+    .book-body { display: block; }
+    /* Spans, so the whole card is one link — they have to be blocks to stack.
+       The book's name is the section heading, so the card doesn't repeat it. */
+    .book-note { display: block; font-size: .9rem; line-height: 1.55; color: var(--ink-2); margin: 0 0 .55rem; }
+    .book-cta { display: block; font-size: .875rem; font-weight: 600; color: var(--accent); }
+
+    /* ─── Footer (plus-grid hairline, as on MIRA) ───────────────────────── */
+    .foot { margin-top: 0; padding: 2.5rem 0 3rem; position: relative; }
+    .foot-row {
+      position: relative;
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+      gap: 1rem; padding-top: 1.25rem;
+      border-top: 1px solid var(--border-2);
+    }
+    .foot-plus { position: absolute; width: 15px; height: 15px; fill: rgba(13, 17, 23, .12); top: -8px; }
+    .foot-plus--l { left: -7px; }
+    .foot-plus--r { right: -7px; }
+    .foot p { margin: 0; font-size: .8rem; line-height: 1.6; color: var(--muted); }
+    .foot a { font-weight: 500; }
+
+    /* ─── Scroll reveal (replaces framer-motion) ────────────────────────────
+       Only elements JS has explicitly marked `pending` are hidden, and JS only
+       marks the ones already below the fold. Anything visible on arrival is
+       never hidden, so a script that fails, stalls, or gets suspended can never
+       blank content the reader can see. */
+    .reveal { transition: opacity .4s ease, transform .4s ease; }
+    .reveal.pending { opacity: 0; transform: translateY(12px); }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal, .reveal.pending { opacity: 1; transform: none; transition: none; }
+      .talk-thumb, .talk-play, .press-row img, .card { transition: none; }
     }
   </style>
-  <link rel="icon" type="image/png" href="footer.png">
-  <title>Daniele Gammelli</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=us-ascii">
-  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
-  <table width="800" border="0" align="center" cellspacing="0" cellpadding="0">
-    <tr>
-      <td>
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-          <tr>
-            <td width="100%" valign="middle" style="text-align: justify;">
-              <p align="center">
-                <name>Daniele Gammelli</name>
-              </p>
-              <p>I am a postdoc at Stanford University, advised by <a target="_blank" href="https://web.stanford.edu/~pavone/">Prof. Marco Pavone</a>. The goal of my research is to develop broadly capable autonomous systems, with a particular emphasis autonomous aerospace robotics and future mobility systems.</p>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="glow" aria-hidden="true"></div>
 
-              <p>I completed my PhD at the Technical University of Denmark (DTU), working with <a target="_blank" href="https://camara.scripts.mit.edu/home/">Prof. Francisco Camara Pereira</a>, <a target="_blank" href="https://fprodrigues.com/">Prof. Filipe Rodrigues</a>, and <a target="_blank" href="https://orbit.dtu.dk/en/persons/dario-pacino">Prof. Dario Pacino</a>. During my PhD, I was fortunate to spend my time in the <a target="_blank" href="https://mlsm.man.dtu.dk/">Machine Learning for Smart Mobility</a> Lab. Before my PhD, I spent some time in Amazon's Operations Research Team.
-              </p>
-              <p align=center>
-                <a href="mailto:gammelli@stanford.edu">Email</a> &nbsp/&nbsp
-                <a target="_blank" href="https://twitter.com/DanieleGammelli"> Twitter </a> &nbsp/&nbsp
-                <a target="_blank" href="https://scholar.google.com/citations?user=C9ZbB3cAAAAJ&hl=en">Google Scholar</a> &nbsp/&nbsp
-                <a target="_blank" href="https://github.com/DanieleGammelli">Github</a> &nbsp/&nbsp
-                <a target="_blank" href="resume/resume_gammelli.pdf">CV</a> &nbsp/&nbsp
-                <a target="_blank" href="https://linkedin.com/in/daniele-gammelli"> LinkedIn </a>
-              </p>
-              <br>
-              <p align="center">
-                <strong>I am on the 2025-2026 faculty job market!</strong>
-              </p>
-            </td>
-            <td width="33%">
-              <img src="gammelli_profile.png" width="250" height="250">
-            </td>
-          </tr>
-        </table>
-        
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="15">
-          <tr>
-            <td width="100%" valign="middle">
-              <p align="center">
-                <em> The goal of my research is to develop the algorithmic foundations and system-level methodologies that enable AI-powered autonomous systems to operate safely, efficiently, and reliably in <b>high-stakes</b> environments.</em>
-              </p>
-            </td>
-          </tr>
-          </table>
-        
-          <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-            <tr>
-              <td width="100%" valign="middle">
-                <heading>Recent Talks</heading>
-                <br>
-                <p> <a target="_blank" href="https://stanfordasl.github.io/robotics_seminar/">Stanford Robotics Seminar</a> | Space Autonomy Through the Lens of Foundation Models.</p> 
-                <!-- <iframe
-                src="https://www.youtube.com/embed/x30DJwgwwb8?si=u1gSKXuTshY_Ac7y" width="560" height="315" frameborder="0" allowfullscreen>
-                </iframe> -->
-                <a href="https://www.youtube.com/watch?v=x30DJwgwwb8" target="_blank">
-                  <img src="thumbnail.png" alt="Stanford Robotics Seminar Thumbnail" width="560" height="315">
-                </a>
-                <br>
-                <br>
-                <p> <a target="_blank" href="https://rl4amod-itsc24.github.io/">ITSC 2024</a> | Tutorial on Graph Reinforcement Learning</p> 
-                <iframe
-                src="https://www.youtube.com/embed/RAeF5-a13TQ?si=Jmh7wW1A4yDijJce" width="560" height="315" frameborder="0" allowfullscreen>
-                </iframe>
-              </td>
-            </tr>
-          </table>
+  <header class="nav">
+    <div class="wrap">
+      <a class="nav-name" href="#top">Daniele Gammelli</a>
+      <nav class="nav-links" aria-label="Sections">
+        <a href="#news">News</a>
+        <a href="#press">Press</a>
+        <a href="#talks">Talks</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#teaching">Teaching</a>
+      </nav>
+    </div>
+  </header>
 
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-	      <tr>
-	        <td width="100%" valign="middle">
-	          <heading>News</heading>
-	          <p>
-	            <ul>
-            <li> [April 2026] The <a target="_blank" href="https://stanfordasl.github.io/PoRA-I/aa174a_aut2526/resources/PoRA.pdf">Principles of Robot Autonomy</a> book is now complete and available online! </li> <br>
-            <li> [Mar 2026] Our work on <a target="_blank" href="https://arxiv.org/abs/2511.14311">Multi-Timescale Model Predictive Control for Slow-Fast Systems</a> was accepted at ECC 2026! </li> <br>
-            <li> [Mar 2026] Our paper <a target="_blank" href="https://arxiv.org/abs/2602.17601">Graph Neural Model Predictive Control for High-Dimensional Systems</a>  was accepted at ICRA 2026! Introducing scalable and effective learning-based MPC for soft robotics. </li> <br>
-            <li> [Mar 2026] Our paper <a target="_blank" href="https://ieeexplore.ieee.org/abstract/document/11397859">Reproducibility in the control of autonomous mobility-on-demand systems</a>  was published in IEEE T-RO! </li> <br>
-            <li> [Mar 2026] Another year of <a target="_blank" href="https://stanfordasl.github.io/aa203/sp2526/">AA203: Optimal and Learning-based Control</a> at Stanford begins! Check the course webpage for all course material. </li> <br>
-            <li> [Feb 2026] Two IEEE RA-L papers accepted for our work on learning-based control of multi-agent robotic systems: <a target="_blank" href="https://arxiv.org/abs/2512.03194">GRAND: Guidance, Rebalancing, and Assignment for Networked Dispatch in Multi-Agent Path Finding</a> (warehouse robotics) and <a target="_blank" href="https://ieeexplore.ieee.org/abstract/document/11347541">Accelerating High-Capacity Ridepooling in Robo-Taxi Systems</a> (intelligent mobility systems). </li> <br>
-          <li> [Jan 2026] Our paper <a target="_blank" href="https://semantic-guidance4space.github.io/">SAGES: Semantic Trajectory Generation for Goal-Oriented Spacecraft Rendezvous</a> was selected as <strong style="color: #c62828;">Best Paper Finalist</strong> at AIAA SciTech. </li> <br>
-                <li> [Jan 2026] Very happy to host the <a target="_blank" href="https://ai4space.space/">4th Workshop on Artificial Intelligence for Space</a> at CVPR 2026! We welcome both short and long paper submissions. Further details are available in the full <a target="_blank" href="https://ai4space.space/call4paper.html">call for papers</a>.</li> <br>
-                <li> [November 2025] Wonderful visit at <a target="_blank" href="https://www.linkedin.com/posts/daniele-gammelli_wonderful-visit-at-nasa-jet-propulsion-laboratory-activity-7399116198468161537-dpNW?utm_source=share&utm_medium=member_desktop&rcm=ACoAACPw8QIBom3zWhS25ohX2BLEeDDk072JD9k">NASA JPL</a>! I gave a talk on "Advancing Aerospace Autonomy with Foundation Models". </li> <br>
-                <li> [July 2025] Our work on <a target="_blank" href="https://acc25art.github.io/">multi-modal transformers for spacecraft trajectory optimization</a> was selected as single-track presentation at ACC 2025. </li> <br>
-                <li> [May 2025] Our works on <a target="_blank" href="https://arxiv.org/abs/2505.07998">vision foundation models for anomaly detection</a> and <a target="_blank" href="https://transformermpc.github.io/">transformers for model predictive control</a> were presented at ICRA 2025. </li> <br>
-                <li> [April 2025] Our ICRL paper on <a target="_blank" href="https://arxiv.org/abs/2410.07933">Offline Hierarchical Reinforcement Learning via Inverse Optimization</a> was presented in Singapore. </li> <br>
-                <li> [April 2025] Another year of <a target="_blank" href="https://stanfordasl.github.io//aa203/sp2425/">AA203: Optimal and Learning-based Control</a> at Stanford begins! Check the course webpage for all course material. </li> <br>
-                <li> [March 2025] Check out our two IEEE Aerospace Conference papers: <a target="_blank" href="https://arxiv.org/abs/2408.05924">Space-LLaVA: a Vision-Language Model Adapted to Extraterrestrial Applications</a> and <a target="_blank" href="https://ieeexplore.ieee.org/abstract/document/11068406/">Towards Robust Spacecraft Trajectory Optimization via Transformers</a>. </li> <br>
-                <li> [March 2025] New pre-print: <a target="_blank" href="https://arxiv.org/abs/2504.06125">Robo-taxi fleet coordination at scale via reinforcement learning</a>. </li> <br>
+  <main id="main">
+    <!-- ─── Hero ──────────────────────────────────────────────────────── -->
+    <section class="hero" id="top">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div>
+            <h1>Daniele Gammelli</h1>
+            <p class="contact">
+              <span>gammelli at stanford dot edu</span><span class="sep">&middot;</span><span>daniele dot gammelli at ai4i dot it</span>
             </p>
-          </td>
-        </tr>
-        </table>
 
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="15">
-          <tr>
-            <td width="100%" valign="middle">
-              <heading>Selected Press Coverage</heading>
-
-              <div class="press-logos">
-                <a target="_blank" href="https://news.stanford.edu/stories/2024/03/ai-makes-a-rendezvous-in-space">
-                  <img class="press-gray" src="figures/s_logo.png" alt="Stanford Report">
-                </a>
-
-                <a target="_blank" href="https://cee.mit.edu/before-autonomous-vehicles-scale-up-researchers-call-for-stronger-scientific-standards/">
-                  <img class="press-gray" src="figures/mit_logo.jpeg" alt="MIT CEE News" style="transform: scale(1.50); transform-origin: center;">
-                </a>
-
-                <a target="_blank" href="https://www.space.com/self-driving-docking-chatgpt-artificial-intelligence">
-                  <img class="press-gray" src="figures/spacenews_logo.jpg" alt="Space News">
-                </a>
-
-                <a target="_blank" href="https://open.spotify.com/episode/7LFhMgepRrlIc3y8Z345NO?si=gkUzhsvVSjO1JuGTU6Nt6A&nd=1&dlsi=028d6e5f36134680">
-                  <img class="press-gray" src="figures/ds_logo.jpeg" alt="Data Skeptic Podcast">
-                </a>
-
-                <a target="_blank" href="https://open.spotify.com/episode/7oYrPVbzwEe6ipY7rhxJF3?si=Tpuq-5LXTr-YAOXCFrlfZQ&nd=1&dlsi=431548c5f9e54335">
-                  <img class="press-gray" src="figures/sz_logo.jpg" alt="Silicon Zombies">
-                </a>
-              </div>
-            </td>
-          </tr>
-        </table>
-
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-          <tr>
-            <td width="100%" valign="middle">
-              <heading>Teaching</heading>
-              <p>
-                <a target="_blank" href="https://stanfordasl.github.io/aa203/sp2526/">Stanford AA203: Optimal and Learning-based Control</a> - Spring 2026
+            <div class="prose">
+              <p>I am the Research Director of the
+                <a target="_blank" rel="noopener" href="https://mira.rd-labs.ai4i.it/">Machine Intelligence for Robot
+                  Autonomy Laboratory</a> at the
+                <a target="_blank" rel="noopener" href="https://ai4i.it/">Italian Institute of Artificial Intelligence
+                  (AI4I)</a>, and a Researcher in the Department of Aeronautics and Astronautics at
+                <a target="_blank" rel="noopener" href="https://www.stanford.edu/">Stanford University</a> within the
+                <a target="_blank" rel="noopener" href="https://asl.stanford.edu/">Autonomous Systems Lab</a>.
+                My lab develops the next generation of tools for Physical AI, advancing embodied intelligence and translating it into real-world impact across aerospace autonomy, future mobility systems, and autonomy at large.
               </p>
-              <p>
-                <a target="_blank" href="https://stanfordasl.github.io//aa203/sp2425/">Stanford AA203: Optimal and Learning-based Control</a> - Spring 2025
-              </p>
-              <p></p>
-                <a target="_blank" href="https://stanfordasl.github.io//aa203/sp2324/">Stanford AA203: Optimal and Learning-based Control</a> - Spring 2024
-              </p>
-              <p>
-                <a target="_blank" href="https://stanfordasl.github.io//aa203/sp2223/">Stanford AA203: Optimal and Learning-based Control</a> - Spring 2023
-              </p>
-              </td>
-          </tr>
-          </table>
 
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-          <tr>
-            <td width="100%" valign="middle">
-              <heading>Principles of Robot Autonomy Book</heading>
-              <br>
-              <br>
-              <a target="_blank" href="https://stanfordasl.github.io/PoRA-I/aa174a_aut2526/resources/PoRA.pdf">
-                <img src="figures/pora_temp.png" alt="Principles of Robot Autonomy book cover" width="320">
-              </a>
-            </td>
-          </tr>
-        </table>
-
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-          <tr>
-            <td width="100%" valign="middle" style="text-align: justify;">
-              <heading>Research</heading>
-              <p>
-                Autonomous systems are increasingly central to modern society, deeply embedded in critical infrastructure, human-facing services, and scientific progress. 
-                From resilient power grids and intelligent transportation networks to cyber-physical workforces that augment human capabilities and coordinated fleets of aerial, terrestrial, and orbital robots, autonomy is rapidly moving from research prototypes to indispensable real-world operations.
-                While the exact embodiments, safeguards, and degrees of agency will evolve, one fact is certain: <strong>persistent, trustworthy, and general-purpose autonomy will be essential</strong>.
+              <p>I completed my PhD at the
+                <a target="_blank" rel="noopener" href="https://www.dtu.dk/english/">Technical University of Denmark
+                  (DTU)</a>, where I was fortunate to spend my time in the
+                <a target="_blank" rel="noopener" href="https://mlsm.man.dtu.dk/">Machine Learning for Smart
+                  Mobility</a> Lab.
               </p>
-              <p>
-                Recent advances in Artificial Intelligence (AI) have greatly accelerated this transformation, with machine learning (ML)-powered autonomy stacks now performing tasks previously considered beyond the capabilities of traditional, non-learning-based systems.
-                Most notably, the emergence of internet-scale, broadly capable Foundation Models (FMs) offers an opportunity to fundamentally rethink how autonomous systems are designed, deployed, and operated.
-                Trained on vast and diverse datasets, these models capture broad priors about the world and have achieved breakthroughs in vision, language, and multi-modal reasoning.
-              </p>
-              <p>
-                However, delivering reliable, general-purpose autonomy presents unique challenges for AI systems.
-                Autonomous systems must guarantee <strong>safety</strong> and <strong>reliability</strong> in real-world environments, often <strong>under conditions that cannot be anticipated at design time</strong>.
-                They must also operate within the <strong>constraints of on-board compute</strong> and learn from only <strong>scarce embodiment-specific data</strong>.
-                These stringent requirements stand in sharp contrast to the properties of current AI systems, which&mdash;despite their remarkable capabilities&mdash;depend on <strong>vast amounts of training data</strong> and <strong>large-scale compute</strong>, and remain vulnerable to <strong>hallucinations and brittle generalization</strong>.
-              </p>
-              <p>
-                To that end, I address these challenges by employing and advancing techniques from AI/ML, control theory, and mathematical optimization.
-                I apply the results to aerospace robotics, future mobility systems, and autonomy at large.
-              </p>
-              <p>
-                For an updated list of my publications, visit my <a target="_blank" href="https://scholar.google.com/citations?user=C9ZbB3cAAAAJ&hl=en">Google Scholar</a> page.
-              </p>
-            </td>
-          </tr>
-        </table>
-
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-          <tr  onmouseout="spacellava_start()" onmouseover="spacellava_start()">
-            <td width="25%">
-              <div class="one">
-              <div class="two" id="spacellava_video">
-                <video width="160" height="100" autoplay loop muted playsinline id="spacellava_vid">
-                  <source src="resources/spacellava.mp4" type="video/mp4">
-                </video>
-              </div>
-              </div>
-              
-              <script type="text/javascript">
-              function spacellava_start() {
-                document.getElementById('spacellava_vid').play();
-              }
-              function spacellava_stop() {
-                document.getElementById('spacellava_vid').pause();
-                document.getElementById('spacellava_vid').currentTime = 0;
-              }
-              </script>
-            </td>
-            <td width="75%" valign="top">
-            <p>
-            <p>
-              <a target="_blank" href="https://arxiv.org/abs/2408.05924">
-              <papertitle>Space-LLaVA: a Vision-Language Model Adapted to Extraterrestrial Applications</papertitle>
-              </a>
-              <br>
-              <a target="_blank" href="https://scholar.google.com/citations?user=DsWNh1YAAAAJ&hl=en">Matthew Foutter</a>, <strong>Daniele Gammelli</strong>, <a target="_blank" href="https://scholar.google.com/citations?user=Zzro5gUAAAAJ&hl=en">Justin Kruger</a>, <a target="_blank" href="https://scholar.google.com/citations?user=Wr17ic8AAAAJ&hl=en">Ethan Foss</a>, <a target="_blank" href="https://www.linkedin.com/in/praneet-bhoj">Praneet Bhoj</a>, <a target="_blank" href="https://slab.stanford.edu/people/tommaso-guffanti">Tommaso Guffanti</a>, <a target="_blank" href="https://slab.stanford.edu/people/simone-damico">Simone D'Amico</a>, <a target="_blank" href="https://web.stanford.edu/~pavone/">Marco Pavone</a><br>
-              <i>IEEE Aerospace Conference</i>, 2025 <br>
-              <a target="_blank" href ="https://arxiv.org/abs/2408.05924">arXiv</a>
-              <br>
-            </p>
-            <p>  We present Space-LLaVA, initialized from a pre-trained LLaVA 13B model and fine-tuned to extraterrestrial applications on tasks such as, e.g., instruction-following, conversations constructed from three extraterrestrial datasets. </p>
-            <p>
-            </p>
-            </td>
-          </tr>
-          
-          <tr  onmouseout="ohio_start()" onmouseover="ohio_start()">
-            <td width="25%">
-              <div class="one">
-              <div class="two" id="ohio_video">
-                <video width="160" height="100" autoplay loop muted playsinline id="ohio_vid">
-                  <source src="resources/ohio.mp4" type="video/mp4">
-                </video>
-              </div>
-              </div>
-              
-              <script type="text/javascript">
-              function ohio_start() {
-                document.getElementById('ohio_vid').play();
-              }
-              function ohio_stop() {
-                document.getElementById('ohio_vid').pause();
-                document.getElementById('ohio_vid').currentTime = 0;
-              }
-              </script>
-            </td>
-            <td width="75%" valign="top">
-            <p>
-            <p>
-              <a target="_blank" href="https://ohio-offline-hierarchical-rl.github.io/">
-              <papertitle>Offline Hierarchical Reinforcement Learning via Inverse Optimization</papertitle>
-              </a>
-              <br>
-              <a target="_blank" href="https://scholar.google.com/citations?user=-0zHX8oAAAAJ&hl=en">Carolin Schmidt</a>, <strong>Daniele Gammelli</strong>, <a target="_blank" href="https://web.stanford.edu/~jh2/">James Harrison</a>, <a target="_blank" href="https://web.stanford.edu/~pavone/">Marco Pavone</a>, <a target="_blank" href="https://fprodrigues.com/">Filipe Rodrigues</a><br>
-              <i>International Conference on Learning Representations (ICLR)</i>, 2025 <br>
-              <a target="_blank" href ="https://ohio-offline-hierarchical-rl.github.io/">project page</a> / <a target="_blank" href ="https://arxiv.org/abs/2410.07933">arXiv</a> / <a target="_blank" href ="https://github.com/carolinssc/OHIO">code</a>
-              <br>
-            </p>
-            <p> We propose OHIO: a framework for offline reinforcement learning (RL) of hierarchical policies. We demonstrate our framework on robotic and network optimization problems and show that it substantially outperforms end-to-end RL methods and improves robustness. We investigate a variety of instantiations of our framework, both in direct deployment of policies trained offline and when online fine-tuning is performed. </p>
-            <p>
-            </p>
-            </td>
-          </tr>
-          
-          <tr  onmouseout="art_start()" onmouseover="art_start()">
-            <td width="25%">
-              <div class="one">
-              <div class="two" id = 'art_image'><img src='resources/art_acc.png' width="160" height="100"></div>
-              <!-- <img src='resources/art.png' width="160" height="100" style="z-index:-1"> -->
-              </div>
-              <script type="text/javascript">
-              function arto_start() {
-              document.getElementById('art_image').style.opacity = "1";
-              }
-              function arto_stop() {
-              document.getElementById('art_image').style.opacity = "0";
-              }
-              // spirl_stop()
-              </script>
-            </td>
-            <td width="75%" valign="top">
-            <p>
-            <p>
-              <a target="_blank" href="https://acc25art.github.io/">
-              <papertitle>Generalizable Spacecraft Trajectory Generation via Multimodal Learning with Transformers</papertitle>
-              </a>
-              <br>
-              <a target="_blank" href="https://scholar.google.com/citations?user=YVygiuQAAAAJ&hl=en">Davide Celestini</a>, <a target="_blank" href="https://scholar.google.com/citations?user=yuvhn2oAAAAJ&hl=en">Amirhossein Afsharrad</a>, <strong>Daniele Gammelli</strong>, <a target="_blank" href="https://scholar.google.com/citations?user=fs5zLSoAAAAJ&hl=it">Tommaso Guffanti</a>, <a target="_blank" href="https://gioele.science/">Gioele Zardini</a>, <a target="_blank" href="https://lall.stanford.edu/">Sanjay Lall</a>, <a target="_blank" href="https://scholar.google.com/citations?user=E8ZGJBcAAAAJ&hl=it">Elisa Capello</a>, <a target="_blank" href="https://slab.stanford.edu/people/simone-damico">Simone D'Amico</a>, <a target="_blank" href="https://web.stanford.edu/~pavone/">Marco Pavone</a><br>
-              <i>American Control Conference</i>, 2025 (<span style="color: #ff0000">Single-track Presentation</span>)<br>
-              <a target="_blank" href ="https://acc25art.github.io/">project page</a> / <a target="_blank" href ="https://arxiv.org/abs/2410.11723">arXiv</a>
-              <br>
-            </p>
-            <p> We present a novel trajectory generation framework that generalizes across diverse problem configurations, by leveraging high-capacity transformer neural networks capable of learning from multimodal data sources. Specifically, our approach integrates transformer-based neural network models into the trajectory optimization process, encoding both scene-level information (e.g., obstacle locations, initial and goal states) and trajectory-level constraints (e.g., time bounds, fuel consumption targets) via multimodal representations. </p>
-            <p>
-            </p>
-            </td>
-          </tr>
-          
-          <tr  onmouseout="art_start()" onmouseover="art_start()">
-            <td width="25%">
-              <div class="one">
-              <div class="two" id = 'art_image'><img src='resources/art_aero25.png' width="160" height="100"></div>
-              <!-- <img src='resources/art.png' width="160" height="100" style="z-index:-1"> -->
-              </div>
-              <script type="text/javascript">
-              function arto_start() {
-              document.getElementById('art_image').style.opacity = "1";
-              }
-              function arto_stop() {
-              document.getElementById('art_image').style.opacity = "0";
-              }
-              // spirl_stop()
-              </script>
-            </td>
-            <td width="75%" valign="top">
-            <p>
-            <p>
-              <a target="_blank" href="https://robust-art.github.io/">
-              <papertitle>Towards Robust Spacecraft Trajectory Optimization via Transformers</papertitle>
-              </a>
-              <br>
-              <a target="_blank" href="https://yujitakubo.com/">Yuji Takubo</a>*, <a target="_blank" href="https://slab.stanford.edu/people/tommaso-guffanti">Tommaso Guffanti</a>*, <strong>Daniele Gammelli</strong>*, <a target="_blank" href="https://web.stanford.edu/~pavone/">Marco Pavone</a>, <a target="_blank" href="https://slab.stanford.edu/people/simone-damico">Simone D'Amico</a><br>
-              <i>IEEE Aerospace Conference</i>, 2025<br>
-              <a target="_blank" href ="https://robust-art.github.io/">project page</a> / <a target="_blank" href ="https://arxiv.org/abs/2410.05585">arXiv</a>
-              <br>
-            </p>
-            <p> This work extends the capabilities of ART to address robust chance-constrained optimal control problems. Specifically, ART is applied to challenging rendezvous scenarios in Low Earth Orbit (LEO), ensuring fault-tolerant behavior under uncertainty. The proposed warm-starting strategy is shown to consistently produce high-quality reference trajectories, achieving up to 30% cost improvement and 50% reduction in infeasible cases compared to conventional methods, demonstrating robust performance across multiple state representations. </p>
-            <p>
-            </p>
-            </td>
-          </tr>
-
-          <tr  onmouseout="art_start()" onmouseover="art_start()">
-            <td width="25%">
-              <div class="one">
-              <div class="two" id="art_video">
-                <video width="160" height="100" autoplay loop muted playsinline id="art_vid">
-                  <source src="resources/tto.mp4" type="video/mp4">
-                </video>
-              </div>
-              </div>
-              
-              <script type="text/javascript">
-              function art_start() {
-                document.getElementById('art_vid').play();
-              }
-              function art_stop() {
-                document.getElementById('art_vid').pause();
-                document.getElementById('art_vid').currentTime = 0;
-              }
-              </script>
-            </td>
-            <td width="75%" valign="top">
-            <p>
-            <p>
-              <a target="_blank" href="https://transformermpc.github.io/">
-              <papertitle>Transformer-based Model Predictive Control: Trajectory Optimization via Sequence Modeling</papertitle>
-              </a>
-              <br>
-              <a target="_blank" href="https://scholar.google.com/citations?user=YVygiuQAAAAJ&hl=en">Davide Celestini</a>*, <strong>Daniele Gammelli</strong>*, <a target="_blank" href="https://slab.stanford.edu/people/tommaso-guffanti">Tommaso Guffanti</a>, <a target="_blank" href="https://slab.stanford.edu/people/simone-damico">Simone D'Amico</a>, <a target="_blank" href="https://scholar.google.com/citations?user=E8ZGJBcAAAAJ&hl=it">Elisa Capello</a>, <a target="_blank" href="https://web.stanford.edu/~pavone/">Marco Pavone</a><br>
-              <i>IEEE Robotics and Automation Letters</i>, 2025<br>
-              <a target="_blank" href ="https://transformermpc.github.io/">project page</a> / <a target="_blank" href ="https://arxiv.org/abs/2410.23916">arXiv</a>  / 
-              <a target="_blank" href ="https://github.com/DavideCelestini/transformermpc-ral24">code</a>
-              <br>
-            </p>
-            <p> We present a unified framework to combine the main strengths of optimization-based and learning-based methods for MPC. Our experiments, performed in simulation and the real world onboard a free-flyer platform, demonstrate the capabilities of our framework to improve MPC convergence and runtime. Compared to purely optimization-based approaches, results show that our approach can improve trajectory generation performance by up to 70%, reduce the number of solver iterations by up to 45%, and improve overall MPC runtime by 7x without loss in performance. </p>
-            <p>
-            </p>
-            </td>
-          </tr>
-        
-          <tr  onmouseout="art_start()" onmouseover="art_start()">
-          <td width="25%">
-            <div class="one">
-            <div class="two" id = 'art_image'><img src='resources/art.gif' width="160" height="100"></div>
-            <!-- <img src='resources/art.png' width="160" height="100" style="z-index:-1"> -->
             </div>
-            <script type="text/javascript">
-            function arto_start() {
-            document.getElementById('art_image').style.opacity = "1";
-            }
-            function arto_stop() {
-            document.getElementById('art_image').style.opacity = "0";
-            }
-            // spirl_stop()
-            </script>
-          </td>
-          <td width="75%" valign="top">
-          <p>
-          <p>
-            <a target="_blank" href="https://rendezvoustransformer.github.io/">
-            <papertitle>Transformers for Trajectory Optimization with Application to Spacecraft Rendezvous</papertitle>
-            </a>
-            <br>
-            <a target="_blank" href="https://slab.stanford.edu/people/tommaso-guffanti">Tommaso Guffanti</a>*, <strong>Daniele Gammelli</strong>*, <a target="_blank" href="https://slab.stanford.edu/people/simone-damico">Simone D'Amico</a>, <a target="_blank" href="https://web.stanford.edu/~pavone/">Marco Pavone</a><br>
-            <i>IEEE Aerospace Conference</i>, 2024<br>
-            <a target="_blank" href ="https://rendezvoustransformer.github.io/">project page</a> / <a target="_blank" href ="https://arxiv.org/abs/2310.13831">arXiv</a>  / 
-            <a target="_blank" href ="https://github.com/Stanford-CAESAR">code</a>
-            <br>
-          </p>
-          <p> We introduce the Autonomous Rendezvous Transformer (ART) for spacecraft trajectory optimization. ART combines optimization-based and AI-based methods, which improves task performance while providing the safety assurances needed for space operations. The method entails embedding high-capacity (namely, transformer-based) neural network models within the optimization process for trajectory generation.</p>
-          <p>
-          </p>
-          </td>
-        </tr>
 
-        <tr  onmouseout="grl_start()" onmouseover="grl_start()">
-          <td width="25%">
-            <div class="one">
-            <div class="two" id = 'grl_image'><img src='resources/grl.png' width="160" height="100"></div>
-            <!-- <img src='resources/grl.png' width="160" height="160" style="z-index:-1"> -->
+            <div class="callout">
+              <p class="callout-label">Openings</p>
+              <ul>
+                <li>I'm hiring for two
+                  <a target="_blank" rel="noopener"
+                    href="https://ai4i.it/two-postdoctoral-positions-in-robot-learning-and-embodied-ai/">postdoctoral
+                    positions in Robot Learning and Embodied AI</a> in the MIRA lab.
+                </li>
+                <li>PhD positions will open soon. Please check the lab website for updates, and do not hesitate to reach out.</li>
+              </ul>
             </div>
-            <script type="text/javascript">
-            function grl_start() {
-            document.getElementById('grl_image').style.opacity = "1";
-            }
-            function grl_stop() {
-            document.getElementById('grl_image').style.opacity = "0";
-            }
-            // spirl_stop()
-            </script>
-          </td>
-          <td width="75%" valign="top">
-          <p>
-          <p>
-            <a target="_blank" href="https://sites.google.com/stanford.edu/graph-rl-for-network-control/">
-            <papertitle>Graph Reinforcement Learning for Network Control via Bi-Level Optimization</papertitle>
-            </a>
-            <br>
-            <strong>Daniele Gammelli</strong>, <a target="_blank" href="https://web.stanford.edu/~jh2/">James Harrison</a>, <a target="_blank" href="https://sites.google.com/view/kaidiyang/">Kaidi Yang</a>, <a target="_blank" href="https://fprodrigues.com/">Filipe Rodrigues</a>, <a target="_blank" href="https://camara.scripts.mit.edu/home/">Francisco C. Pereira</a>, <a target="_blank" href="https://web.stanford.edu/~pavone/">Marco Pavone</a><br>
-            <i>International Conference on Machine Learning (ICML)</i>, 2023<br>
-            <a target="_blank" href ="https://sites.google.com/stanford.edu/graph-rl-for-network-control/">project page</a> / <a target="_blank" href ="https://arxiv.org/abs/2305.09129">arXiv</a>  / 
-            <a target="_blank" href ="https://github.com/DanieleGammelli/graph-rl-for-network-optimization">code</a>
-            <br>
-          </p>
-          <p> We propose a learning-based framework to handle a broad class of network problems by exploiting the main strengths of graph representation learning, reinforcement learning, and classical operations research tools.</p>
-          <p>
-          </p>
-          </td>
-        </tr>
 
-        <tr  onmouseout="grl_eamod_start()" onmouseover="grl_eamod_start()">
-          <td width="25%">
-            <div class="one">
-            <div class="two" id = 'grl_eamod_image'><img src='resources/grl_eamod.png' width="160" height="100"></div>
-            <!-- <img src='resources/grl_eamod.png' width="160" height="160" style="z-index:-1"> -->
-            </div>
-            <script type="text/javascript">
-            function grl_eamod_start() {
-            document.getElementById('grl_eamod_image').style.opacity = "1";
-            }
-            function grl_eamod_stop() {
-            document.getElementById('grl_eamod_image').style.opacity = "0";
-            }
-            // spirl_stop()
-            </script>
-          </td>
-          <td width="75%" valign="top">
-          <p>
-          <p>
-            <a target="_blank" href="https://arxiv.org/abs/2311.05780">
-            <papertitle>Real-time Control of Electric Autonomous Mobility-on-Demand Systems via Graph Reinforcement Learning</papertitle>
-            </a>
-            <br>
-            <a target="_blank" href="https://www.aaryan-singhal.com/">Aaryan Singhal</a>, <strong>Daniele Gammelli</strong>, <a target="_blank" href="https://profiles.stanford.edu/justin-luke">Justin Luke</a>, <a target="_blank" href="https://karthikg.mit.edu/about-me">Karthik Gopalakrishnan</a>, <a target="_blank" href="https://danielegammelli.github.io/">Dominik Helmreich</a>, <a target="_blank" href="https://web.stanford.edu/~pavone/">Marco Pavone</a><br>
-            <i>arXiv</i>, 2023<br>
-            <a target="_blank" href ="https://arxiv.org/abs/2311.05780">arXiv</a>  / 
-            <a target="_blank" href ="https://github.com/StanfordASL/graph-rl-for-eamod">code</a>
-            <br>
-          </p>
-          <p> We present the E-AMoD control problem through the lens of reinforcement learning and propose a graph network-based framework to achieve drastically improved scalability and performance over heuristics.</p>
-          <p>
-          </p>
-          </td>
-        </tr>
-
-        <tr  onmouseout="grl_meta_start()" onmouseover="grl_meta_start()">
-          <td width="25%">
-            <div class="one">
-            <div class="two" id = 'grl_meta_image'><img src='resources/meta_grl.png' width="160" height="100"></div>
-            <img src='resources/meta_grl.png' width="160" height="160" style="z-index:-1">
-            </div>
-            <script type="text/javascript">
-            function grl_meta_start() {
-            document.getElementById('grl_meta_image').style.opacity = "1";
-            }
-            function grl_meta_stop() {
-            document.getElementById('grl_meta_image').style.opacity = "0";
-            }
-            // spirl_stop()
-            </script>
-          </td>
-          <td width="75%" valign="top">
-          <p>
-          <p>
-            <a target="_blank" href="https://dl.acm.org/doi/abs/10.1145/3534678.3539180">
-            <papertitle>Graph Meta-Reinforcement Learning for Transferable Autonomous Mobility-on-Demand</papertitle>
-            </a>
-            <br>
-            <strong>Daniele Gammelli</strong>, <a target="_blank" href="https://web.stanford.edu/~jh2/">James Harrison</a>, <a target="_blank" href="https://sites.google.com/view/kaidiyang/">Kaidi Yang</a>, <a target="_blank" href="https://fprodrigues.com/">Filipe Rodrigues</a>, <a target="_blank" href="https://camara.scripts.mit.edu/home/">Francisco C. Pereira</a>, <a target="_blank" href="https://web.stanford.edu/~pavone/">Marco Pavone</a><br>
-            <i>Conference on Knowledge Discovery and Data Mining (KDD)</i>, 2022 (<span style="color: #ff0000">Oral</span>)<br>
-            <a target="_blank" href ="https://arxiv.org/abs/2202.07147">arXiv</a>  / 
-            <a target="_blank" href ="https://github.com/DanieleGammelli/graph-meta-rl-for-amod">code</a>
-            <br>
-          </p>
-          <p> We formalize the multi-city AMoD problem through the lens of meta-reinforcement learning and devise an RL agent based on recurrent graph neural networks. In our approach, AMoD controllers are explicitly trained such that a small amount of experience within a new city will produce good system performance.</p>
-          <p>
-          </p>
-          </td>
-        </tr>
-        
-        <tr  onmouseout="bs_start()" onmouseover="bs_start()">
-          <td width="25%">
-            <div class="one">
-            <div class="two" id = 'bs_image'><img src='resources/bs.png' width="160" height="100"></div>
-            <img src='resources/bs.png' width="160" height="160" style="z-index:-1">
-            </div>
-            <script type="text/javascript">
-            function bs_start() {
-            document.getElementById('bs_image').style.opacity = "1";
-            }
-            function bs_stop() {
-            document.getElementById('bs_image').style.opacity = "0";
-            }
-            // spirl_stop()
-            </script>
-          </td>
-          <td width="75%" valign="top">
-          <p>
-          <p>
-            <a target="_blank" href="https://www.sciencedirect.com/science/article/pii/S0968090X22000183">
-            <papertitle>Predictive and Prescriptive Performance of Bike-sharing Demand Forecasts for Inventory Management</papertitle>
-            </a>
-            <br>
-            <strong>Daniele Gammelli</strong>, <a target="_blank" href="https://www.ot.mgt.tum.de/log/team/yihua-wang-msc/">Yihua Wang</a>, <a target="_blank" href="https://people.utwente.nl/d.r.j.prak">Dennis Prak</a>, <a target="_blank" href="https://fprodrigues.com/">Filipe Rodrigues</a>, <a target="_blank" href="https://www.ot.mgt.tum.de/log/team/minner/">Stefan Minner</a>, <a target="_blank" href="https://camara.scripts.mit.edu/home/">Francisco C. Pereira</a><br>
-            <i>Transportation Research Part C: Emerging Technologies (TR-C)</i>, 2022<br>
-            <a target="_blank" href ="https://open.spotify.com/episode/7LFhMgepRrlIc3y8Z345NO?si=gkUzhsvVSjO1JuGTU6Nt6A">podcast</a> /
-            <a target="_blank" href ="https://arxiv.org/abs/2108.00858">arXiv</a>  / 
-            <a target="_blank" href ="https://github.com/DanieleGammelli/variational-poisson-rnn">code</a>
-            <br>
-          </p>
-          <p> We devise a deep generative model to forecast future pickup and return rates for shared mobility services. We show how more accurate predictions do not necessarily translate into better inventory decisions. By providing insights into the interplay between forecasts, model assumptions, and decisions, we point out that forecasts and decision models should be carefully evaluated and harmonized to optimally control shared mobility systems.</p>
-          <p>
-          </p>
-          </td>
-        </tr>
-
-        <tr  onmouseout="mogp_start()" onmouseover="mogp_start()">
-          <td width="25%">
-            <div class="one">
-            <div class="two" id = 'mogp_image'><img src='resources/mogp.png' width="160" height="100"></div>
-            <img src='resources/mogp.png' width="160" height="160" style="z-index:-1">
-            </div>
-            <script type="text/javascript">
-            function mogp_start() {
-            document.getElementById('mogp_image').style.opacity = "1";
-            }
-            function mogp_stop() {
-            document.getElementById('mogp_image').style.opacity = "0";
-            }
-            // spirl_stop()
-            </script>
-          </td>
-          <td width="75%" valign="top">
-          <p>
-          <p>
-            <a target="_blank" href="https://www.sciencedirect.com/science/article/abs/pii/S0031320322002321">
-            <papertitle>Generalized Multi-Output Gaussian Process Censored Regression</papertitle>
-            </a>
-            <br>
-            <strong>Daniele Gammelli</strong>, <a target="_blank" href="https://danielegammelli.github.io/">Kasper Pryds Rolsted</a>, <a target="_blank" href="https://orbit.dtu.dk/en/persons/dario-pacino">Dario Pacino</a>, <a target="_blank" href="https://fprodrigues.com/">Filipe Rodrigues</a><br>
-            <i>Pattern Recognition</i>, 2022<br>
-            <a target="_blank" href ="https://arxiv.org/abs/2009.04822">arXiv</a>  / 
-            <a target="_blank" href ="https://github.com/DanieleGammelli/multi-output-gp-censored-regression">code</a>
-            <br>
-          </p>
-          <p> We propose a novel extension to the multi-output Gaussian process framework that leverages information from multiple correlated outputs to address the censoring problem. We further position the proposed model into a general framework capable of dealing with arbitrary likelihood functions for the purpose of censored modelling.</p>
-          <p>
-          </p>
-          </td>
-        </tr>
-        
-        <tr  onmouseout="rfn_start()" onmouseover="rfn_start()">
-          <td width="25%">
-            <div class="one">
-            <div class="two" id = 'rfn_image'><img src='resources/rfn.png' width="160" height="160"></div>
-            <img src='resources/rfn.png' width="160" height="160" style="z-index:-1">
-            </div>
-            <script type="text/javascript">
-            function rfn_start() {
-            document.getElementById('rfn_image').style.opacity = "1";
-            }
-            function rfn_stop() {
-            document.getElementById('rfn_image').style.opacity = "0";
-            }
-            // spirl_stop()
-            </script>
-          </td>
-          <td width="75%" valign="top">
-          <p>
-          <p>
-            <a target="_blank" href="https://www.sciencedirect.com/science/article/pii/S0031320322002333">
-            <papertitle>Recurrent Flow Networks: A Recurrent Latent Variable Model for Density Modelling of Urban Mobility</papertitle>
-            </a>
-            <br>
-            <strong>Daniele Gammelli</strong>, <a target="_blank" href="https://fprodrigues.com/">Filipe Rodrigues</a><br>
-            <i>Pattern Recognition</i>, 2022<br>
-            <i>ICML Workshop on Invertible Neural Nets and Normalizing Flows</i>, 2022<br>
-            <a target="_blank" href ="https://arxiv.org/abs/2006.05256">arXiv</a>  / 
-            <a target="_blank" href ="https://github.com/DanieleGammelli/recurrent-flow-nets">code</a>
-            <br>
-          </p>
-          <p> We introduce recurrent flow networks (RFN) for spatio-temporal data prediction by explicitly disentangling between temporal and spatial variability.</p>
-          <p>
-          </p>
-          </td>
-        </tr>
-
-
-        <tr  onmouseout="grl_amod_start()" onmouseover="grl_amod_start()">
-          <td width="25%">
-            <div class="one">
-            <div class="two" id = 'grl_amod_image'><img src='resources/grl_amod.png' width="160" height="100"></div>
-            <img src='resources/grl_amod.png' width="160" height="160" style="z-index:-1">
-            </div>
-            <script type="text/javascript">
-            function grl_amod_start() {
-            document.getElementById('grl_amod_image').style.opacity = "1";
-            }
-            function grl_amod_stop() {
-            document.getElementById('grl_amod_image').style.opacity = "0";
-            }
-            // spirl_stop()
-            </script>
-          </td>
-          <td width="75%" valign="top">
-          <p>
-          <p>
-            <a target="_blank" href="https://ieeexplore.ieee.org/abstract/document/9683135">
-            <papertitle>Graph Neural Network Reinforcement Learning for Autonomous Mobility-on-Demand Systems</papertitle>
-            </a>
-            <br>
-            <strong>Daniele Gammelli</strong>, <a target="_blank" href="https://web.stanford.edu/~jh2/">James Harrison</a>, <a target="_blank" href="https://sites.google.com/view/kaidiyang/">Kaidi Yang</a>, <a target="_blank" href="https://fprodrigues.com/">Filipe Rodrigues</a>, <a target="_blank" href="https://camara.scripts.mit.edu/home/">Francisco C. Pereira</a>, <a target="_blank" href="https://web.stanford.edu/~pavone/">Marco Pavone</a><br>
-            <i>Conference on Decision and Control (CDC)</i>, 2021<br>
-            <i>ICML Workshop on RL for Real Life</i>, 2021 (<span style="color: #ff0000">Best paper candiate</span>)<br>
-            <a target="_blank" href ="https://arxiv.org/abs/2104.11434">arXiv</a>  / 
-            <a target="_blank" href ="https://github.com/DanieleGammelli/gnn-rl-for-amod">code</a>
-            <br>
-          </p>
-          <p> We propose a deep reinforcement learning framework to control the rebalancing of AMoD systems through graph neural networks. Crucially, we demonstrate that graph neural networks enable reinforcement learning agents to recover behavior policies that are significantly more transferable, generalizable, and scalable than policies learned through other approaches.</p>
-          <p>
-          </p>
-          </td>
-        </tr>
-
-        <tr  onmouseout="cgp_start()" onmouseover="cgp_start()">
-          <td width="25%">
-            <div class="one">
-            <div class="two" id = 'cgp_image'><img src='resources/cgp.png' width="160" height="160"></div>
-            <img src='resources/cgp.png' width="160" height="160" style="z-index:-1">
-            </div>
-            <script type="text/javascript">
-            function cgp_start() {
-            document.getElementById('cgp_image').style.opacity = "1";
-            }
-            function cgp_stop() {
-            document.getElementById('cgp_image').style.opacity = "0";
-            }
-            // spirl_stop()
-            </script>
-          </td>
-          <td width="75%" valign="top">
-          <p>
-          <p>
-            <a target="_blank" href="https://www.sciencedirect.com/science/article/abs/pii/S0968090X20306859">
-            <papertitle>Estimating Latent Demand of Shared Mobility through Censored Gaussian Processes</papertitle>
-            </a>
-            <br>
-            <strong>Daniele Gammelli</strong>, <a target="_blank" href="https://danielegammelli.github.io/">Inon Peled</a>, <a target="_blank" href="https://fprodrigues.com/">Filipe Rodrigues</a>, <a target="_blank" href="https://orbit.dtu.dk/en/persons/dario-pacino">Dario Pacino</a>, <a target="_blank" href="https://danielegammelli.github.io/">Haci A. Kurtaran</a>, <a target="_blank" href="https://camara.scripts.mit.edu/home/">Francisco C. Pereira</a><br>
-            <i>Transportation Research Part C: Emerging Technologies</i>, 2020<br>
-            <i>Transportation Research Board Annual Meeting (TRB)</i>, 2020 (<span style="color: #ff0000">Lectern Session</span>)<br>
-            <a target="_blank" href ="https://arxiv.org/abs/2001.07402">arXiv</a>  / 
-            <a target="_blank" href ="https://github.com/DanieleGammelli/CensoredGP">code</a>
-            <br>
-          </p>
-          <p> We propose a general method for censorship-aware modeling, for which we devise a censored likelihood function. We apply this method to the task of shared mobility demand prediction by incorporating the censored likelihood within a Gaussian Process model, which can flexibly approximate arbitrary functional forms.</p>
-          <p>
-          </p>
-          </td>
-        </tr>
-
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-          <tbody><tr>
-            <td>
-            <br>
-            <p align="right"><font size="2">
-              <a href="https://people.eecs.berkeley.edu/~barron/">This website is based on this cool template!</a>
-              </font>
+            <p class="links-row">
+              <a target="_blank" rel="noopener" href="https://twitter.com/DanieleGammelli">Twitter</a> <span class="sep">/</span>
+              <a target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=C9ZbB3cAAAAJ&amp;hl=en">Google Scholar</a> <span class="sep">/</span>
+              <a target="_blank" rel="noopener" href="https://github.com/DanieleGammelli">Github</a> <span class="sep">/</span>
+              <a target="_blank" rel="noopener" href="resume/resume_gammelli.pdf">CV</a> <span class="sep">/</span>
+              <a target="_blank" rel="noopener" href="https://linkedin.com/in/daniele-gammelli">LinkedIn</a>
             </p>
-            </td>
-          </tr>
-          </tbody>
-        </table>
+          </div>
 
-  </table>
+          <img class="hero-photo" src="gammelli_profile.jpg" width="600" height="600"
+            alt="Portrait of Daniele Gammelli">
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Mission ───────────────────────────────────────────────────── -->
+    <section class="mission">
+      <div class="wrap">
+        <p>The goal of my research is to develop the algorithmic foundations and system-level methodologies that enable
+          AI-powered autonomous systems to operate safely, efficiently, and reliably in <b>high-stakes</b> environments.
+        </p>
+      </div>
+    </section>
+
+    <!-- ─── News ──────────────────────────────────────────────────────── -->
+    <section class="sec sec--band" id="news">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <h2 class="sec-title">News</h2>
+        </div>
+
+        <ul class="news-list reveal" id="news-list">
+          <li>
+            <span class="news-date">Jun 2026</span>
+            <p class="news-body">Our paper <a target="_blank" rel="noopener" href="https://semantic-guidance4space.github.io/">SAGES: Semantic Trajectory Generation for Goal-Oriented Spacecraft Rendezvous</a> was selected as the <span class="chip">Intelligent Systems Best Paper Award</span> at the 2026 AIAA SciTech Forum!</p>
+          </li>
+          <li>
+            <span class="news-date">Apr 2026</span>
+            <p class="news-body">The <a target="_blank" rel="noopener" href="https://porabook.com">Principles of Robot Autonomy</a> book is now complete and available online!</p>
+          </li>
+          <li>
+            <span class="news-date">Mar 2026</span>
+            <p class="news-body">Our work on <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2511.14311">Multi-Timescale Model Predictive Control for Slow-Fast Systems</a> was accepted at ECC 2026!</p>
+          </li>
+          <li>
+            <span class="news-date">Mar 2026</span>
+            <p class="news-body">Our paper <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2602.17601">Graph Neural Model Predictive Control for High-Dimensional Systems</a> was accepted at ICRA 2026! Introducing scalable and effective learning-based MPC for soft robotics.</p>
+          </li>
+          <li>
+            <span class="news-date">Mar 2026</span>
+            <p class="news-body">Our paper <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/11397859">Reproducibility in the control of autonomous mobility-on-demand systems</a> was published in IEEE T-RO!</p>
+          </li>
+          <li>
+            <span class="news-date">Mar 2026</span>
+            <p class="news-body">Another year of <a target="_blank" rel="noopener" href="https://stanfordasl.github.io/aa203/sp2526/">AA203: Optimal and Learning-based Control</a> at Stanford begins!</p>
+          </li>
+          <li>
+            <span class="news-date">Feb 2026</span>
+            <p class="news-body">Two IEEE RA-L papers accepted on learning-based control of multi-agent robotic systems: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2512.03194">GRAND: Guidance, Rebalancing, and Assignment for Networked Dispatch in Multi-Agent Path Finding</a> and <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/11347541">Accelerating High-Capacity Ridepooling in Robo-Taxi Systems</a>.</p>
+          </li>
+          <li data-extra>
+            <span class="news-date">Jan 2026</span>
+            <p class="news-body">Very happy to host the <a target="_blank" rel="noopener" href="https://ai4space.space/">4th Workshop on Artificial Intelligence for Space</a> at CVPR 2026! See the full <a target="_blank" rel="noopener" href="https://ai4space.space/call4paper.html">call for papers</a>.</p>
+          </li>
+          <li data-extra>
+            <span class="news-date">Nov 2025</span>
+            <p class="news-body">Wonderful visit at <a target="_blank" rel="noopener" href="https://www.linkedin.com/posts/daniele-gammelli_wonderful-visit-at-nasa-jet-propulsion-laboratory-activity-7399116198468161537-dpNW">NASA JPL</a>! I gave a talk on &ldquo;Advancing Aerospace Autonomy with Foundation Models&rdquo;.</p>
+          </li>
+          <li data-extra>
+            <span class="news-date">Jul 2025</span>
+            <p class="news-body">Our work on <a target="_blank" rel="noopener" href="https://acc25art.github.io/">multi-modal transformers for spacecraft trajectory optimization</a> was selected as single-track presentation at ACC 2025.</p>
+          </li>
+          <li data-extra>
+            <span class="news-date">May 2025</span>
+            <p class="news-body">Our works on <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2505.07998">vision foundation models for anomaly detection</a> and <a target="_blank" rel="noopener" href="https://transformermpc.github.io/">transformers for model predictive control</a> were presented at ICRA 2025.</p>
+          </li>
+          <li data-extra>
+            <span class="news-date">Apr 2025</span>
+            <p class="news-body">Our ICLR paper on <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2410.07933">Offline Hierarchical Reinforcement Learning via Inverse Optimization</a> was presented in Singapore.</p>
+          </li>
+          <li data-extra>
+            <span class="news-date">Apr 2025</span>
+            <p class="news-body">Another year of <a target="_blank" rel="noopener" href="https://stanfordasl.github.io//aa203/sp2425/">AA203: Optimal and Learning-based Control</a> at Stanford begins!</p>
+          </li>
+          <li data-extra>
+            <span class="news-date">Mar 2025</span>
+            <p class="news-body">Check out our two IEEE Aerospace Conference papers: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2408.05924">Space-LLaVA: a Vision-Language Model Adapted to Extraterrestrial Applications</a> and <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/11068406/">Towards Robust Spacecraft Trajectory Optimization via Transformers</a>.</p>
+          </li>
+          <li data-extra>
+            <span class="news-date">Mar 2025</span>
+            <p class="news-body">New pre-print: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2504.06125">Robo-taxi fleet coordination at scale via reinforcement learning</a>.</p>
+          </li>
+        </ul>
+
+        <div class="news-more">
+          <button type="button" class="news-toggle" id="news-toggle" hidden aria-expanded="true"
+            aria-controls="news-list"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Press ─────────────────────────────────────────────────────── -->
+    <section class="sec" id="press">
+      <div class="wrap">
+        <div class="sec-head sec-head--center reveal">
+          <h2 class="sec-title">Selected Press Coverage</h2>
+        </div>
+
+        <div class="press-row reveal">
+          <a target="_blank" rel="noopener" style="flex: 0 1 210px" aria-label="Stanford Report"
+            href="https://news.stanford.edu/stories/2024/03/ai-makes-a-rendezvous-in-space">
+            <img src="figures/s_logo.png" alt="Stanford Report" loading="lazy">
+          </a>
+          <a target="_blank" rel="noopener" style="flex: 0 1 250px" aria-label="MIT CEE News"
+            href="https://cee.mit.edu/before-autonomous-vehicles-scale-up-researchers-call-for-stronger-scientific-standards/">
+            <img src="figures/mit_logo.jpeg" alt="MIT CEE News" loading="lazy">
+          </a>
+          <a target="_blank" rel="noopener" style="flex: 0 1 210px" aria-label="Space News"
+            href="https://www.space.com/self-driving-docking-chatgpt-artificial-intelligence">
+            <img src="figures/spacenews_logo.jpg" alt="Space News" loading="lazy">
+          </a>
+          <a target="_blank" rel="noopener" style="flex: 0 1 190px" aria-label="Science News"
+            href="https://www.sciencenews.org/article/ai-task-completion-ability-space-scifi">
+            <img src="figures/sciencenews_logo.svg" alt="Science News" loading="lazy">
+          </a>
+          <a target="_blank" rel="noopener" style="flex: 0 1 84px" aria-label="Data Skeptic Podcast"
+            href="https://open.spotify.com/episode/7LFhMgepRrlIc3y8Z345NO?si=gkUzhsvVSjO1JuGTU6Nt6A&amp;nd=1&amp;dlsi=028d6e5f36134680">
+            <img src="figures/ds_logo.jpeg" alt="Data Skeptic Podcast" loading="lazy">
+          </a>
+          <a target="_blank" rel="noopener" style="flex: 0 1 78px" aria-label="Silicon Zombies"
+            href="https://open.spotify.com/episode/7oYrPVbzwEe6ipY7rhxJF3?si=Tpuq-5LXTr-YAOXCFrlfZQ&amp;nd=1&amp;dlsi=431bc54d3c8">
+            <img src="figures/sz_logo.jpg" alt="Silicon Zombies" loading="lazy">
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Talks ─────────────────────────────────────────────────────── -->
+    <section class="sec sec--band" id="talks">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <h2 class="sec-title">Recent Talks</h2>
+        </div>
+
+        <div class="talk-grid reveal">
+          <div class="talk">
+            <a class="talk-tile" target="_blank" rel="noopener"
+              href="https://www.youtube.com/playlist?list=PLa9dmHsLK9dg"
+              aria-label="Watch: Stanford AA203 lecture series (opens the YouTube playlist)">
+              <span class="talk-thumb">
+                <span class="talk-poster" aria-hidden="true">
+                  <span class="talk-poster-y">01</span>
+                  <span class="talk-poster-mark">Stanford AA203</span>
+                </span>
+                <img class="talk-img is-local" src="figures/aa203_lecture.jpg" alt="" loading="lazy"
+                  width="854" height="482">
+                <span class="talk-play" aria-hidden="true">
+                  <svg viewBox="0 0 48 48" width="44" height="44">
+                    <circle cx="24" cy="24" r="23" />
+                    <path d="M19 15.5 L33.5 24 L19 32.5 Z" />
+                  </svg>
+                </span>
+              </span>
+            </a>
+            <div class="talk-meta">
+              <span class="talk-venue"><a target="_blank" rel="noopener"
+                  href="https://stanfordasl.github.io/aa203/">Stanford AA203</a></span>
+              <span class="talk-title">Optimal and Learning-based Control &mdash; full lecture series</span>
+            </div>
+          </div>
+
+          <div class="talk">
+            <a class="talk-tile" target="_blank" rel="noopener" href="https://youtu.be/x30DJwgwwb8"
+              aria-label="Watch: Space Autonomy Through the Lens of Foundation Models (opens YouTube)">
+              <span class="talk-thumb">
+                <span class="talk-poster" aria-hidden="true">
+                  <span class="talk-poster-y">02</span>
+                  <span class="talk-poster-mark">Stanford Robotics Seminar</span>
+                </span>
+                <img class="talk-img" src="https://i.ytimg.com/vi/x30DJwgwwb8/hqdefault.jpg" alt="" loading="lazy"
+                  referrerpolicy="no-referrer"
+                  onload="if(this.naturalWidth>120){this.style.opacity=1}else{this.remove()}"
+                  onerror="this.remove()">
+                <span class="talk-play" aria-hidden="true">
+                  <svg viewBox="0 0 48 48" width="44" height="44">
+                    <circle cx="24" cy="24" r="23" />
+                    <path d="M19 15.5 L33.5 24 L19 32.5 Z" />
+                  </svg>
+                </span>
+              </span>
+            </a>
+            <div class="talk-meta">
+              <span class="talk-venue"><a target="_blank" rel="noopener"
+                  href="https://stanfordasl.github.io/robotics_seminar/">Stanford Robotics Seminar</a></span>
+              <span class="talk-title">Space Autonomy Through the Lens of Foundation Models</span>
+            </div>
+          </div>
+
+          <div class="talk">
+            <a class="talk-tile" target="_blank" rel="noopener" href="https://youtu.be/RAeF5-a13TQ"
+              aria-label="Watch: Tutorial on Graph Reinforcement Learning (opens YouTube)">
+              <span class="talk-thumb">
+                <span class="talk-poster" aria-hidden="true">
+                  <span class="talk-poster-y">03</span>
+                  <span class="talk-poster-mark">ITSC 2024</span>
+                </span>
+                <img class="talk-img is-local" src="figures/itsc_talk.jpg" alt="" loading="lazy"
+                  width="854" height="480">
+                <span class="talk-play" aria-hidden="true">
+                  <svg viewBox="0 0 48 48" width="44" height="44">
+                    <circle cx="24" cy="24" r="23" />
+                    <path d="M19 15.5 L33.5 24 L19 32.5 Z" />
+                  </svg>
+                </span>
+              </span>
+            </a>
+            <div class="talk-meta">
+              <span class="talk-venue"><a target="_blank" rel="noopener"
+                  href="https://rl4amod-itsc24.github.io/">ITSC 2024</a></span>
+              <span class="talk-title">Tutorial on Graph Reinforcement Learning</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Research ──────────────────────────────────────────────────── -->
+    <section class="sec" id="research">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <h2 class="sec-title">Research</h2>
+        </div>
+
+        <div class="prose reveal" style="max-width: 52rem">
+          <p>
+            Autonomous systems are increasingly central to modern society, deeply embedded in critical infrastructure,
+            human-facing services, and scientific progress.
+            From resilient power grids and intelligent transportation networks to cyber-physical workforces that augment
+            human capabilities and coordinated fleets of aerial, terrestrial, and orbital robots, autonomy is rapidly
+            moving from research prototypes to indispensable real-world operations.
+            While the exact embodiments, safeguards, and degrees of agency will evolve, one fact is certain:
+            <strong>persistent, trustworthy, and general-purpose autonomy will be essential</strong>.
+          </p>
+          <p>
+            Recent advances in Artificial Intelligence (AI) have greatly accelerated this transformation, with machine
+            learning (ML)-powered autonomy stacks now performing tasks previously considered beyond the capabilities of
+            traditional, non-learning-based systems.
+            Most notably, the emergence of internet-scale, broadly capable Foundation Models (FMs) offers an opportunity
+            to fundamentally rethink how autonomous systems are designed, deployed, and operated.
+            Trained on vast and diverse datasets, these models capture broad priors about the world and have achieved
+            breakthroughs in vision, language, and multi-modal reasoning.
+          </p>
+          <p>
+            However, delivering reliable, general-purpose autonomy presents unique challenges for AI systems.
+            Autonomous systems must guarantee <strong>safety</strong> and <strong>reliability</strong> in real-world
+            environments, often <strong>under conditions that cannot be anticipated at design time</strong>.
+            They must also operate within the <strong>constraints of on-board compute</strong> and learn from only
+            <strong>scarce embodiment-specific data</strong>.
+            These stringent requirements stand in sharp contrast to the properties of current AI systems,
+            which&mdash;despite their remarkable capabilities&mdash;depend on <strong>vast amounts of training data</strong>
+            and <strong>large-scale compute</strong>, and remain vulnerable to <strong>hallucinations and brittle
+              generalization</strong>.
+          </p>
+          <p>
+            To that end, I address these challenges by employing and advancing techniques from AI/ML, control theory, and
+            mathematical optimization.
+            I apply the results to aerospace robotics, future mobility systems, and autonomy at large.
+          </p>
+          <p>
+            For an updated list of my publications, visit my
+            <a target="_blank" rel="noopener"
+              href="https://scholar.google.com/citations?user=C9ZbB3cAAAAJ&amp;hl=en">Google Scholar</a> page.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Publications ──────────────────────────────────────────────── -->
+    <section class="sec" id="publications" style="padding-top: 0">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <h2 class="sec-title">Publications</h2>
+        </div>
+
+        <div class="pub-list">
+          <!-- Space-LLaVA -->
+          <article class="pub reveal">
+            <div class="pub-media">
+              <video loop muted playsinline preload="none" aria-hidden="true" data-src="resources/spacellava.mp4"></video>
+            </div>
+            <div class="pub-body">
+              <a class="pub-title" target="_blank" rel="noopener" href="https://arxiv.org/abs/2408.05924">Space-LLaVA: a
+                Vision-Language Model Adapted to Extraterrestrial Applications</a>
+              <p class="pub-authors">
+                <a target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=DsWNh1YAAAAJ&amp;hl=en">Matthew Foutter</a>,
+                <strong>Daniele Gammelli</strong>,
+                <a target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=Zzro5gUAAAAJ&amp;hl=en">Justin Kruger</a>,
+                <a target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=Wr17ic8AAAAJ&amp;hl=en">Ethan Foss</a>,
+                <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/praneet-bhoj">Praneet Bhoj</a>,
+                <a target="_blank" rel="noopener" href="https://slab.stanford.edu/people/tommaso-guffanti">Tommaso Guffanti</a>,
+                <a target="_blank" rel="noopener" href="https://slab.stanford.edu/people/simone-damico">Simone D'Amico</a>,
+                <a target="_blank" rel="noopener" href="https://web.stanford.edu/~pavone/">Marco Pavone</a>
+              </p>
+              <p class="pub-venue">IEEE Aerospace Conference, 2025</p>
+              <p class="pub-links">
+                <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2408.05924">arXiv</a>
+              </p>
+              <p class="pub-abstract">We present Space-LLaVA, initialized from a pre-trained LLaVA 13B model and
+                fine-tuned to extraterrestrial applications on tasks such as, e.g., instruction-following, conversations
+                constructed from three extraterrestrial datasets.</p>
+            </div>
+          </article>
+
+          <!-- OHIO -->
+          <article class="pub reveal">
+            <div class="pub-media">
+              <video loop muted playsinline preload="none" aria-hidden="true" data-src="resources/ohio.mp4"></video>
+            </div>
+            <div class="pub-body">
+              <a class="pub-title" target="_blank" rel="noopener"
+                href="https://ohio-offline-hierarchical-rl.github.io/">Offline Hierarchical Reinforcement Learning via
+                Inverse Optimization</a>
+              <p class="pub-authors">
+                <a target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=-0zHX8oAAAAJ&amp;hl=en">Carolin Schmidt</a>,
+                <strong>Daniele Gammelli</strong>,
+                <a target="_blank" rel="noopener" href="https://web.stanford.edu/~jh2/">James Harrison</a>,
+                <a target="_blank" rel="noopener" href="https://web.stanford.edu/~pavone/">Marco Pavone</a>,
+                <a target="_blank" rel="noopener" href="https://fprodrigues.com/">Filipe Rodrigues</a>
+              </p>
+              <p class="pub-venue">International Conference on Learning Representations (ICLR), 2025</p>
+              <p class="pub-links">
+                <a target="_blank" rel="noopener" href="https://ohio-offline-hierarchical-rl.github.io/">project page</a>
+                <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2410.07933">arXiv</a>
+                <a target="_blank" rel="noopener" href="https://github.com/carolinssc/OHIO">code</a>
+              </p>
+              <p class="pub-abstract">We propose OHIO: a framework for offline reinforcement learning (RL) of
+                hierarchical policies. We demonstrate our framework on robotic and network optimization problems and show
+                that it substantially outperforms end-to-end RL methods and improves robustness. We investigate a variety
+                of instantiations of our framework, both in direct deployment of policies trained offline and when online
+                fine-tuning is performed.</p>
+            </div>
+          </article>
+
+          <!-- ACC 2025 -->
+          <article class="pub reveal">
+            <div class="pub-media">
+              <img src="resources/art_acc.png" alt="" loading="lazy">
+            </div>
+            <div class="pub-body">
+              <a class="pub-title" target="_blank" rel="noopener" href="https://acc25art.github.io/">Generalizable
+                Spacecraft Trajectory Generation via Multimodal Learning with Transformers</a>
+              <p class="pub-authors">
+                <a target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=YVygiuQAAAAJ&amp;hl=en">Davide Celestini</a>,
+                <a target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=yuvhn2oAAAAJ&amp;hl=en">Amirhossein Afsharrad</a>,
+                <strong>Daniele Gammelli</strong>,
+                <a target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=fs5zLSoAAAAJ&amp;hl=it">Tommaso Guffanti</a>,
+                <a target="_blank" rel="noopener" href="https://gioele.science/">Gioele Zardini</a>,
+                <a target="_blank" rel="noopener" href="https://lall.stanford.edu/">Sanjay Lall</a>,
+                <a target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=E8ZGJBcAAAAJ&amp;hl=it">Elisa Capello</a>,
+                <a target="_blank" rel="noopener" href="https://slab.stanford.edu/people/simone-damico">Simone D'Amico</a>,
+                <a target="_blank" rel="noopener" href="https://web.stanford.edu/~pavone/">Marco Pavone</a>
+              </p>
+              <p class="pub-venue">American Control Conference, 2025 <span class="chip">Single-track Presentation</span></p>
+              <p class="pub-links">
+                <a target="_blank" rel="noopener" href="https://acc25art.github.io/">project page</a>
+                <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2410.11723">arXiv</a>
+              </p>
+              <p class="pub-abstract">We present a novel trajectory generation framework that generalizes across diverse
+                problem configurations, by leveraging high-capacity transformer neural networks capable of learning from
+                multimodal data sources. Specifically, our approach integrates transformer-based neural network models
+                into the trajectory optimization process, encoding both scene-level information (e.g., obstacle
+                locations, initial and goal states) and trajectory-level constraints (e.g., time bounds, fuel consumption
+                targets) via multimodal representations.</p>
+            </div>
+          </article>
+
+          <!-- Robust ART -->
+          <article class="pub reveal">
+            <div class="pub-media">
+              <img src="resources/art_aero25.png" alt="" loading="lazy">
+            </div>
+            <div class="pub-body">
+              <a class="pub-title" target="_blank" rel="noopener" href="https://robust-art.github.io/">Towards Robust
+                Spacecraft Trajectory Optimization via Transformers</a>
+              <p class="pub-authors">
+                <a target="_blank" rel="noopener" href="https://yujitakubo.com/">Yuji Takubo</a>*,
+                <a target="_blank" rel="noopener" href="https://slab.stanford.edu/people/tommaso-guffanti">Tommaso Guffanti</a>*,
+                <strong>Daniele Gammelli</strong>*,
+                <a target="_blank" rel="noopener" href="https://web.stanford.edu/~pavone/">Marco Pavone</a>,
+                <a target="_blank" rel="noopener" href="https://slab.stanford.edu/people/simone-damico">Simone D'Amico</a>
+              </p>
+              <p class="pub-venue">IEEE Aerospace Conference, 2025</p>
+              <p class="pub-links">
+                <a target="_blank" rel="noopener" href="https://robust-art.github.io/">project page</a>
+                <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2410.05585">arXiv</a>
+              </p>
+              <p class="pub-abstract">This work extends the capabilities of ART to address robust chance-constrained
+                optimal control problems. Specifically, ART is applied to challenging rendezvous scenarios in Low Earth
+                Orbit (LEO), ensuring fault-tolerant behavior under uncertainty. The proposed warm-starting strategy is
+                shown to consistently produce high-quality reference trajectories, achieving up to 30% cost improvement
+                and 50% reduction in infeasible cases compared to conventional methods, demonstrating robust performance
+                across multiple state representations.</p>
+            </div>
+          </article>
+
+          <!-- Transformer MPC -->
+          <article class="pub reveal">
+            <div class="pub-media">
+              <video loop muted playsinline preload="none" aria-hidden="true" data-src="resources/tto.mp4"></video>
+            </div>
+            <div class="pub-body">
+              <a class="pub-title" target="_blank" rel="noopener" href="https://transformermpc.github.io/">Transformer-based
+                Model Predictive Control: Trajectory Optimization via Sequence Modeling</a>
+              <p class="pub-authors">
+                <a target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=YVygiuQAAAAJ&amp;hl=en">Davide Celestini</a>*,
+                <strong>Daniele Gammelli</strong>*,
+                <a target="_blank" rel="noopener" href="https://slab.stanford.edu/people/tommaso-guffanti">Tommaso Guffanti</a>,
+                <a target="_blank" rel="noopener" href="https://slab.stanford.edu/people/simone-damico">Simone D'Amico</a>,
+                <a target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=E8ZGJBcAAAAJ&amp;hl=it">Elisa Capello</a>,
+                <a target="_blank" rel="noopener" href="https://web.stanford.edu/~pavone/">Marco Pavone</a>
+              </p>
+              <p class="pub-venue">IEEE Robotics and Automation Letters, 2025</p>
+              <p class="pub-links">
+                <a target="_blank" rel="noopener" href="https://transformermpc.github.io/">project page</a>
+                <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2410.23916">arXiv</a>
+                <a target="_blank" rel="noopener" href="https://github.com/DavideCelestini/transformermpc-ral24">code</a>
+              </p>
+              <p class="pub-abstract">We present a unified framework to combine the main strengths of optimization-based
+                and learning-based methods for MPC. Our experiments, performed in simulation and the real world onboard a
+                free-flyer platform, demonstrate the capabilities of our framework to improve MPC convergence and
+                runtime. Compared to purely optimization-based approaches, results show that our approach can improve
+                trajectory generation performance by up to 70%, reduce the number of solver iterations by up to 45%, and
+                improve overall MPC runtime by 7x without loss in performance.</p>
+            </div>
+          </article>
+
+          <!-- ART -->
+          <article class="pub reveal">
+            <div class="pub-media">
+              <img src="resources/art.gif" alt="" loading="lazy">
+            </div>
+            <div class="pub-body">
+              <a class="pub-title" target="_blank" rel="noopener" href="https://rendezvoustransformer.github.io/">Transformers
+                for Trajectory Optimization with Application to Spacecraft Rendezvous</a>
+              <p class="pub-authors">
+                <a target="_blank" rel="noopener" href="https://slab.stanford.edu/people/tommaso-guffanti">Tommaso Guffanti</a>*,
+                <strong>Daniele Gammelli</strong>*,
+                <a target="_blank" rel="noopener" href="https://slab.stanford.edu/people/simone-damico">Simone D'Amico</a>,
+                <a target="_blank" rel="noopener" href="https://web.stanford.edu/~pavone/">Marco Pavone</a>
+              </p>
+              <p class="pub-venue">IEEE Aerospace Conference, 2024</p>
+              <p class="pub-links">
+                <a target="_blank" rel="noopener" href="https://rendezvoustransformer.github.io/">project page</a>
+                <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2310.13831">arXiv</a>
+                <a target="_blank" rel="noopener" href="https://github.com/Stanford-CAESAR">code</a>
+              </p>
+              <p class="pub-abstract">We introduce the Autonomous Rendezvous Transformer (ART) for spacecraft trajectory
+                optimization. ART combines optimization-based and AI-based methods, which improves task performance while
+                providing the safety assurances needed for space operations. The method entails embedding high-capacity
+                (namely, transformer-based) neural network models within the optimization process for trajectory
+                generation.</p>
+            </div>
+          </article>
+
+          <!-- Graph RL bi-level -->
+          <article class="pub reveal">
+            <div class="pub-media">
+              <img src="resources/grl.png" alt="" loading="lazy">
+            </div>
+            <div class="pub-body">
+              <a class="pub-title" target="_blank" rel="noopener"
+                href="https://sites.google.com/stanford.edu/graph-rl-for-network-control/">Graph Reinforcement Learning
+                for Network Control via Bi-Level Optimization</a>
+              <p class="pub-authors">
+                <strong>Daniele Gammelli</strong>,
+                <a target="_blank" rel="noopener" href="https://web.stanford.edu/~jh2/">James Harrison</a>,
+                <a target="_blank" rel="noopener" href="https://sites.google.com/view/kaidiyang/">Kaidi Yang</a>,
+                <a target="_blank" rel="noopener" href="https://fprodrigues.com/">Filipe Rodrigues</a>,
+                <a target="_blank" rel="noopener" href="https://camara.scripts.mit.edu/home/">Francisco C. Pereira</a>,
+                <a target="_blank" rel="noopener" href="https://web.stanford.edu/~pavone/">Marco Pavone</a>
+              </p>
+              <p class="pub-venue">International Conference on Machine Learning (ICML), 2023</p>
+              <p class="pub-links">
+                <a target="_blank" rel="noopener" href="https://sites.google.com/stanford.edu/graph-rl-for-network-control/">project page</a>
+                <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2305.09129">arXiv</a>
+                <a target="_blank" rel="noopener" href="https://github.com/DanieleGammelli/graph-rl-for-network-optimization">code</a>
+              </p>
+              <p class="pub-abstract">We propose a learning-based framework to handle a broad class of network problems by
+                exploiting the main strengths of graph representation learning, reinforcement learning, and classical
+                operations research tools.</p>
+            </div>
+          </article>
+
+          <!-- E-AMoD -->
+          <article class="pub reveal">
+            <div class="pub-media">
+              <img src="resources/grl_eamod.png" alt="" loading="lazy">
+            </div>
+            <div class="pub-body">
+              <a class="pub-title" target="_blank" rel="noopener" href="https://arxiv.org/abs/2311.05780">Real-time
+                Control of Electric Autonomous Mobility-on-Demand Systems via Graph Reinforcement Learning</a>
+              <p class="pub-authors">
+                <a target="_blank" rel="noopener" href="https://www.aaryan-singhal.com/">Aaryan Singhal</a>,
+                <strong>Daniele Gammelli</strong>,
+                <a target="_blank" rel="noopener" href="https://profiles.stanford.edu/justin-luke">Justin Luke</a>,
+                <a target="_blank" rel="noopener" href="https://karthikg.mit.edu/about-me">Karthik Gopalakrishnan</a>,
+                Dominik Helmreich,
+                <a target="_blank" rel="noopener" href="https://web.stanford.edu/~pavone/">Marco Pavone</a>
+              </p>
+              <p class="pub-venue">arXiv, 2023</p>
+              <p class="pub-links">
+                <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2311.05780">arXiv</a>
+                <a target="_blank" rel="noopener" href="https://github.com/StanfordASL/graph-rl-for-eamod">code</a>
+              </p>
+              <p class="pub-abstract">We present the E-AMoD control problem through the lens of reinforcement learning
+                and propose a graph network-based framework to achieve drastically improved scalability and performance
+                over heuristics.</p>
+            </div>
+          </article>
+
+          <!-- Meta graph RL -->
+          <article class="pub reveal">
+            <div class="pub-media">
+              <img src="resources/meta_grl.png" alt="" loading="lazy">
+            </div>
+            <div class="pub-body">
+              <a class="pub-title" target="_blank" rel="noopener"
+                href="https://dl.acm.org/doi/abs/10.1145/3534678.3539180">Graph Meta-Reinforcement Learning for
+                Transferable Autonomous Mobility-on-Demand</a>
+              <p class="pub-authors">
+                <strong>Daniele Gammelli</strong>,
+                <a target="_blank" rel="noopener" href="https://web.stanford.edu/~jh2/">James Harrison</a>,
+                <a target="_blank" rel="noopener" href="https://sites.google.com/view/kaidiyang/">Kaidi Yang</a>,
+                <a target="_blank" rel="noopener" href="https://fprodrigues.com/">Filipe Rodrigues</a>,
+                <a target="_blank" rel="noopener" href="https://camara.scripts.mit.edu/home/">Francisco C. Pereira</a>,
+                <a target="_blank" rel="noopener" href="https://web.stanford.edu/~pavone/">Marco Pavone</a>
+              </p>
+              <p class="pub-venue">Conference on Knowledge Discovery and Data Mining (KDD), 2022 <span class="chip">Oral</span></p>
+              <p class="pub-links">
+                <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2202.07147">arXiv</a>
+                <a target="_blank" rel="noopener" href="https://github.com/DanieleGammelli/graph-meta-rl-for-amod">code</a>
+              </p>
+              <p class="pub-abstract">We formalize the multi-city AMoD problem through the lens of meta-reinforcement
+                learning and devise an RL agent based on recurrent graph neural networks. In our approach, AMoD
+                controllers are explicitly trained such that a small amount of experience within a new city will produce
+                good system performance.</p>
+            </div>
+          </article>
+
+          <!-- Bike sharing -->
+          <article class="pub reveal">
+            <div class="pub-media">
+              <img src="resources/bs.png" alt="" loading="lazy">
+            </div>
+            <div class="pub-body">
+              <a class="pub-title" target="_blank" rel="noopener"
+                href="https://www.sciencedirect.com/science/article/pii/S0968090X22000183">Predictive and Prescriptive
+                Performance of Bike-sharing Demand Forecasts for Inventory Management</a>
+              <p class="pub-authors">
+                <strong>Daniele Gammelli</strong>,
+                <a target="_blank" rel="noopener" href="https://www.ot.mgt.tum.de/log/team/yihua-wang-msc/">Yihua Wang</a>,
+                <a target="_blank" rel="noopener" href="https://people.utwente.nl/d.r.j.prak">Dennis Prak</a>,
+                <a target="_blank" rel="noopener" href="https://fprodrigues.com/">Filipe Rodrigues</a>,
+                <a target="_blank" rel="noopener" href="https://www.ot.mgt.tum.de/log/team/minner/">Stefan Minner</a>,
+                <a target="_blank" rel="noopener" href="https://camara.scripts.mit.edu/home/">Francisco C. Pereira</a>
+              </p>
+              <p class="pub-venue">Transportation Research Part C: Emerging Technologies (TR-C), 2022</p>
+              <p class="pub-links">
+                <a target="_blank" rel="noopener" href="https://open.spotify.com/episode/7LFhMgepRrlIc3y8Z345NO?si=gkUzhsvVSjO1JuGTU6Nt6A">podcast</a>
+                <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2108.00858">arXiv</a>
+                <a target="_blank" rel="noopener" href="https://github.com/DanieleGammelli/variational-poisson-rnn">code</a>
+              </p>
+              <p class="pub-abstract">We devise a deep generative model to forecast future pickup and return rates for
+                shared mobility services. We show how more accurate predictions do not necessarily translate into better
+                inventory decisions. By providing insights into the interplay between forecasts, model assumptions, and
+                decisions, we point out that forecasts and decision models should be carefully evaluated and harmonized
+                to optimally control shared mobility systems.</p>
+            </div>
+          </article>
+
+          <!-- MOGP censored -->
+          <article class="pub reveal">
+            <div class="pub-media">
+              <img src="resources/mogp.png" alt="" loading="lazy">
+            </div>
+            <div class="pub-body">
+              <a class="pub-title" target="_blank" rel="noopener"
+                href="https://www.sciencedirect.com/science/article/abs/pii/S0031320322002321">Generalized Multi-Output
+                Gaussian Process Censored Regression</a>
+              <p class="pub-authors">
+                <strong>Daniele Gammelli</strong>,
+                Kasper Pryds Rolsted,
+                <a target="_blank" rel="noopener" href="https://orbit.dtu.dk/en/persons/dario-pacino">Dario Pacino</a>,
+                <a target="_blank" rel="noopener" href="https://fprodrigues.com/">Filipe Rodrigues</a>
+              </p>
+              <p class="pub-venue">Pattern Recognition, 2022</p>
+              <p class="pub-links">
+                <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2009.04822">arXiv</a>
+                <a target="_blank" rel="noopener" href="https://github.com/DanieleGammelli/multi-output-gp-censored-regression">code</a>
+              </p>
+              <p class="pub-abstract">We propose a novel extension to the multi-output Gaussian process framework that
+                leverages information from multiple correlated outputs to address the censoring problem. We further
+                position the proposed model into a general framework capable of dealing with arbitrary likelihood
+                functions for the purpose of censored modelling.</p>
+            </div>
+          </article>
+
+          <!-- RFN -->
+          <article class="pub reveal">
+            <div class="pub-media">
+              <img src="resources/rfn.png" alt="" loading="lazy">
+            </div>
+            <div class="pub-body">
+              <a class="pub-title" target="_blank" rel="noopener"
+                href="https://www.sciencedirect.com/science/article/pii/S0031320322002333">Recurrent Flow Networks: A
+                Recurrent Latent Variable Model for Density Modelling of Urban Mobility</a>
+              <p class="pub-authors">
+                <strong>Daniele Gammelli</strong>,
+                <a target="_blank" rel="noopener" href="https://fprodrigues.com/">Filipe Rodrigues</a>
+              </p>
+              <p class="pub-venue">Pattern Recognition, 2022<br>ICML Workshop on Invertible Neural Nets and Normalizing
+                Flows, 2022</p>
+              <p class="pub-links">
+                <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2006.05256">arXiv</a>
+                <a target="_blank" rel="noopener" href="https://github.com/DanieleGammelli/recurrent-flow-nets">code</a>
+              </p>
+              <p class="pub-abstract">We introduce recurrent flow networks (RFN) for spatio-temporal data prediction by
+                explicitly disentangling between temporal and spatial variability.</p>
+            </div>
+          </article>
+
+          <!-- GNN RL AMoD -->
+          <article class="pub reveal">
+            <div class="pub-media">
+              <img src="resources/grl_amod.png" alt="" loading="lazy">
+            </div>
+            <div class="pub-body">
+              <a class="pub-title" target="_blank" rel="noopener"
+                href="https://ieeexplore.ieee.org/abstract/document/9683135">Graph Neural Network Reinforcement Learning
+                for Autonomous Mobility-on-Demand Systems</a>
+              <p class="pub-authors">
+                <strong>Daniele Gammelli</strong>,
+                <a target="_blank" rel="noopener" href="https://web.stanford.edu/~jh2/">James Harrison</a>,
+                <a target="_blank" rel="noopener" href="https://sites.google.com/view/kaidiyang/">Kaidi Yang</a>,
+                <a target="_blank" rel="noopener" href="https://fprodrigues.com/">Filipe Rodrigues</a>,
+                <a target="_blank" rel="noopener" href="https://camara.scripts.mit.edu/home/">Francisco C. Pereira</a>,
+                <a target="_blank" rel="noopener" href="https://web.stanford.edu/~pavone/">Marco Pavone</a>
+              </p>
+              <p class="pub-venue">Conference on Decision and Control (CDC), 2021<br>ICML Workshop on RL for Real Life,
+                2021 <span class="chip">Best Paper Candidate</span></p>
+              <p class="pub-links">
+                <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2104.11434">arXiv</a>
+                <a target="_blank" rel="noopener" href="https://github.com/DanieleGammelli/gnn-rl-for-amod">code</a>
+              </p>
+              <p class="pub-abstract">We propose a deep reinforcement learning framework to control the rebalancing of
+                AMoD systems through graph neural networks. Crucially, we demonstrate that graph neural networks enable
+                reinforcement learning agents to recover behavior policies that are significantly more transferable,
+                generalizable, and scalable than policies learned through other approaches.</p>
+            </div>
+          </article>
+
+          <!-- Censored GP -->
+          <article class="pub reveal">
+            <div class="pub-media">
+              <img src="resources/cgp.png" alt="" loading="lazy">
+            </div>
+            <div class="pub-body">
+              <a class="pub-title" target="_blank" rel="noopener"
+                href="https://www.sciencedirect.com/science/article/abs/pii/S0968090X20306859">Estimating Latent Demand
+                of Shared Mobility through Censored Gaussian Processes</a>
+              <p class="pub-authors">
+                <strong>Daniele Gammelli</strong>,
+                Inon Peled,
+                <a target="_blank" rel="noopener" href="https://fprodrigues.com/">Filipe Rodrigues</a>,
+                <a target="_blank" rel="noopener" href="https://orbit.dtu.dk/en/persons/dario-pacino">Dario Pacino</a>,
+                Haci A. Kurtaran,
+                <a target="_blank" rel="noopener" href="https://camara.scripts.mit.edu/home/">Francisco C. Pereira</a>
+              </p>
+              <p class="pub-venue">Transportation Research Part C: Emerging Technologies, 2020<br>Transportation Research
+                Board Annual Meeting (TRB), 2020 <span class="chip">Lectern Session</span></p>
+              <p class="pub-links">
+                <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2001.07402">arXiv</a>
+                <a target="_blank" rel="noopener" href="https://github.com/DanieleGammelli/CensoredGP">code</a>
+              </p>
+              <p class="pub-abstract">We propose a general method for censorship-aware modeling, for which we devise a
+                censored likelihood function. We apply this method to the task of shared mobility demand prediction by
+                incorporating the censored likelihood within a Gaussian Process model, which can flexibly approximate
+                arbitrary functional forms.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Teaching & book ───────────────────────────────────────────── -->
+    <section class="sec sec--band" id="teaching">
+      <div class="wrap">
+        <div class="tb-grid">
+          <div class="reveal">
+            <div class="sec-head">
+                  <h2 class="sec-title">Teaching</h2>
+            </div>
+            <ul class="teach-list">
+              <li>
+                <span class="teach-year">Spring 2026</span>
+                <span><a target="_blank" rel="noopener" href="https://stanfordasl.github.io/aa203/sp2526/">Stanford
+                    AA203: Optimal and Learning-based Control</a></span>
+              </li>
+              <li>
+                <span class="teach-year">Spring 2025</span>
+                <span><a target="_blank" rel="noopener" href="https://stanfordasl.github.io//aa203/sp2425/">Stanford
+                    AA203: Optimal and Learning-based Control</a></span>
+              </li>
+              <li>
+                <span class="teach-year">Spring 2024</span>
+                <span><a target="_blank" rel="noopener" href="https://stanfordasl.github.io//aa203/sp2324/">Stanford
+                    AA203: Optimal and Learning-based Control</a></span>
+              </li>
+              <li>
+                <span class="teach-year">Spring 2023</span>
+                <span><a target="_blank" rel="noopener" href="https://stanfordasl.github.io//aa203/sp2223/">Stanford
+                    AA203: Optimal and Learning-based Control</a></span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="reveal">
+            <div class="sec-head">
+                  <h2 class="sec-title">Principles of Robot Autonomy</h2>
+            </div>
+            <a class="card book-card" target="_blank" rel="noopener" href="https://porabook.com">
+              <img src="figures/pora_cover.jpg" width="336" height="480"
+                alt="Principles of Robot Autonomy book cover">
+              <span class="book-body">
+                <span class="book-note">The complete book — chapters, lecture recordings, and slides — is now
+                  available online.</span>
+                <span class="book-cta">porabook.com &rarr;</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot-row">
+        <svg class="foot-plus foot-plus--l" viewBox="0 0 15 15" aria-hidden="true">
+          <path d="M8 0H7V7H0V8H7V15H8V8H15V7H8V0Z" />
+        </svg>
+        <svg class="foot-plus foot-plus--r" viewBox="0 0 15 15" aria-hidden="true">
+          <path d="M8 0H7V7H0V8H7V15H8V8H15V7H8V0Z" />
+        </svg>
+        <p>
+          <a target="_blank" rel="noopener" href="https://mira.rd-labs.ai4i.it/">MIRA Lab</a>,
+          <a target="_blank" rel="noopener" href="https://ai4i.it/">Italian Institute of Artificial Intelligence</a>
+          &middot; Stanford University, Aeronautics &amp; Astronautics
+        </p>
+        <p>
+          Design after <a target="_blank" rel="noopener" href="https://people.eecs.berkeley.edu/~barron/">this cool
+            template</a>.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* Scroll reveal — the vanilla stand-in for MIRA's framer-motion useInView.
+         Content starts at opacity 0, so anything that keeps it from being
+         revealed would silently blank the page. IntersectionObserver drives the
+         normal case; a viewport sweep (and a hard timeout) is the backstop for
+         when it can't run — a background tab suspends IO callbacks entirely. */
+      var revealables = document.querySelectorAll('.reveal');
+      var show = function (el) { el.classList.remove('pending'); };
+      var showAll = function () { Array.prototype.forEach.call(revealables, show); };
+      var vh = function () { return window.innerHeight || document.documentElement.clientHeight; };
+
+      if (reduce || !('IntersectionObserver' in window)) {
+        showAll();
+      } else {
+        /* Hide only what is currently out of sight — never anything on screen. */
+        var h = vh();
+        Array.prototype.forEach.call(revealables, function (el) {
+          if (el.getBoundingClientRect().top >= h - 60) { el.classList.add('pending'); }
+        });
+
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) { show(entry.target); io.unobserve(entry.target); }
+          });
+        }, { rootMargin: '-60px 0px' });
+        Array.prototype.forEach.call(revealables, function (el) { io.observe(el); });
+
+        /* Backstops for the cases IntersectionObserver can't cover: a restored
+           scroll position, a resize, or a tab that was suspended while hidden. */
+        var sweep = function () {
+          var b = vh() - 60;
+          Array.prototype.forEach.call(revealables, function (el) {
+            if (el.classList.contains('pending') && el.getBoundingClientRect().top < b) { show(el); }
+          });
+        };
+        window.addEventListener('scroll', sweep, { passive: true });
+        window.addEventListener('resize', sweep);
+        window.addEventListener('load', sweep);
+        window.addEventListener('pageshow', sweep);
+        document.addEventListener('visibilitychange', sweep);
+        setTimeout(sweep, 200);
+        /* Last resort: content is never hidden for more than a moment. */
+        setTimeout(showAll, 1500);
+      }
+
+      /* News: collapse to the first 7 items. Every item ships in the DOM, so
+         without JS the full list simply stays visible. */
+      var list = document.getElementById('news-list');
+      var toggle = document.getElementById('news-toggle');
+      if (list && toggle) {
+        var total = list.querySelectorAll('li').length;
+        var render = function () {
+          var collapsed = list.getAttribute('data-collapsed') === 'true';
+          toggle.textContent = collapsed ? 'Show all news (' + total + ') ↓' : 'Show less ↑';
+          toggle.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+        };
+        list.setAttribute('data-collapsed', 'true');
+        toggle.hidden = false;
+        render();
+        toggle.addEventListener('click', function () {
+          var collapsed = list.getAttribute('data-collapsed') === 'true';
+          list.setAttribute('data-collapsed', collapsed ? 'false' : 'true');
+          render();
+          if (collapsed === false) { list.scrollIntoView({ block: 'start' }); }
+        });
+      }
+
+      /* Publication videos: attach the source only once a card is near the
+         viewport, so the ~30 MB of MP4s never loads for a visitor who doesn't
+         scroll that far. */
+      var vids = document.querySelectorAll('video[data-src]');
+      var attach = function (v) {
+        if (v.src) { return; }
+        v.src = v.getAttribute('data-src');
+        var playing = v.play();
+        if (playing && playing.catch) { playing.catch(function () {}); }
+      };
+      if (!('IntersectionObserver' in window)) {
+        Array.prototype.forEach.call(vids, attach);
+      } else {
+        var vio = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) { attach(entry.target); vio.unobserve(entry.target); }
+          });
+        }, { rootMargin: '200px 0px' });
+        Array.prototype.forEach.call(vids, function (v) { vio.observe(v); });
+
+        /* Same backstop as the reveals: if IO never runs, attach whatever is
+           on screen so the cards aren't permanently black. */
+        var vsweep = function () {
+          var h = window.innerHeight || document.documentElement.clientHeight;
+          Array.prototype.forEach.call(vids, function (v) {
+            var r = v.getBoundingClientRect();
+            if (r.top < h + 200 && r.bottom > -200) { attach(v); }
+          });
+        };
+        window.addEventListener('scroll', vsweep, { passive: true });
+        document.addEventListener('visibilitychange', vsweep);
+        vsweep();
+      }
+
+      /* Sticky nav: highlight the section currently in view. */
+      var navLinks = document.querySelectorAll('.nav-links a');
+      var sections = [];
+      Array.prototype.forEach.call(navLinks, function (link) {
+        var target = document.querySelector(link.getAttribute('href'));
+        if (target) { sections.push({ link: link, el: target }); }
+      });
+      if (sections.length) {
+        var sync = function () {
+          var y = window.scrollY + 120;
+          var current = null;
+          sections.forEach(function (s) { if (s.el.offsetTop <= y) { current = s; } });
+          sections.forEach(function (s) { s.link.classList.toggle('is-active', s === current); });
+        };
+        var ticking = false;
+        window.addEventListener('scroll', function () {
+          if (!ticking) {
+            ticking = true;
+            window.requestAnimationFrame(function () { sync(); ticking = false; });
+          }
+        }, { passive: true });
+        sync();
+      }
+    })();
+  </script>
 </body>
 
 </html>
